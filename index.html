@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 }
 
 .jticker-container { flex:1; overflow:hidden; position: relative; height: 100%; display: flex; alignItems: center; }
-.jticker { display:inline-block; white-space:nowrap; animation:tick 30s linear infinite; font-family:'Rajdhani',sans-serif; font-weight:800; font-size:17px; color:#fff; letter-spacing: 0.5px;}
+.jticker { display:inline-block; white-space:nowrap; animation:tick 35s linear infinite; font-family:'Rajdhani',sans-serif; font-weight:800; font-size:17px; color:#fff; letter-spacing: 0.5px; padding-right: 100%;}
 .jticker:hover { animation-play-state: paused; }
 
 .jcard { cursor:pointer; transition:transform .2s,box-shadow .2s; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden; padding-bottom: 12px; height: 100%; display: flex; flex-direction: column; }
@@ -240,7 +240,7 @@ function CategoryPage({cat, arts, open}) {
       <div style={{textAlign:"center", padding:"80px 20px", background:"#fff", borderRadius:"12px", border:"1px solid #EBEBEB", marginTop:"32px"}}>
         <div style={{fontSize:"56px", marginBottom:"20px"}}>📰</div>
         <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginBottom:"12px"}}>इस श्रेणी में अभी कोई खबर नहीं है</h2>
-        <p style={{fontSize:"19px", color:"#666", fontWeight:600}}>कृपया ताज़ा अपडेट के लिए प्रतीक्षा करें। हम जल्द ही यहाँ नई खबरें प्रकाशित करेंगे।</p>
+        <p style={{fontSize:"19px", color:"#666", fontWeight:600}}>कृपया ताज़ा अपडेट के लिए प्रतीक्षा करें। हम जल्द ही यहाँ नई खबरें प्रकाशित करेंगे। (Please wait for the latest updates.)</p>
       </div>
     )}
   </div>;
@@ -272,47 +272,71 @@ function ArticlePage({a, goHome, related, open}){
 
 function AboutPage() {
   return <div style={{maxWidth:"900px", margin:"0 auto", padding:"64px 20px", minHeight:"60vh"}}>
-    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>हमारे बारे में</h1>
-    <p><strong>जनार्दन न्यूज़ (Janardan News)</strong> एक स्वतंत्र और निष्पक्ष डिजिटल समाचार पोर्टल है। हमारा विशेष फोकस झारखंड राज्य की राजनीतिक, सामाजिक, और सांस्कृतिक घटनाओं के साथ-साथ राष्ट्रीय स्तर की महत्वपूर्ण खबरों पर है।</p>
-    <p>हम मानते हैं कि एक मजबूत लोकतंत्र और जागरूक समाज के लिए नागरिकों तक बिना किसी पूर्वाग्रह (Unbiased) के, सटीक और पारदर्शी जानकारी पहुंचना अनिवार्य है। जनार्दन न्यूज़ इसी दिशा में एक प्रयास है, जहां हम जमीनी हकीकत को पूरी ईमानदारी के साथ आप तक पहुंचाते हैं।</p>
-    <p>हमारा लक्ष्य केवल सूचना देना नहीं है, बल्कि उस सूचना के पीछे के तथ्यों और विश्लेषण को सामने लाना है ताकि हमारे पाठक जागरूक फैसले ले सकें।</p>
+    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>हमारे बारे में <span style={{fontSize:"28px", color:"#555"}}>/ About Us</span></h1>
     
-    <h2 style={{fontSize:"32px", fontWeight:900, color:"#0F2557", marginTop:"48px", marginBottom:"20px"}}>संपर्क करें</h2>
+    <p><strong>जनार्दन न्यूज़ (Janardan News)</strong> एक स्वतंत्र और निष्पक्ष डिजिटल समाचार पोर्टल है। हमारा विशेष फोकस झारखंड राज्य की राजनीतिक, सामाजिक, और सांस्कृतिक घटनाओं के साथ-साथ राष्ट्रीय स्तर की महत्वपूर्ण खबरों पर है।</p>
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"32px"}}>
+      <strong>Janardan News</strong> is an independent and unbiased digital news portal. Our special focus is on the political, social, and cultural events of Jharkhand state, along with significant national news.
+    </p>
+
+    <p>हम मानते हैं कि एक मजबूत लोकतंत्र और जागरूक समाज के लिए नागरिकों तक बिना किसी पूर्वाग्रह (Unbiased) के, सटीक और पारदर्शी जानकारी पहुंचना अनिवार्य है। जनार्दन न्यूज़ इसी दिशा में एक प्रयास है, जहां हम जमीनी हकीकत को पूरी ईमानदारी के साथ आप तक पहुंचाते हैं।</p>
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"48px"}}>
+      We believe that for a strong democracy and aware society, it is imperative that accurate and transparent information reaches citizens without any prejudice. Janardan News is an effort in this direction, bringing the ground reality to you with utmost honesty.
+    </p>
+    
+    <h2 style={{fontSize:"32px", fontWeight:900, color:"#0F2557", marginBottom:"20px"}}>संपर्क करें <span style={{fontSize:"22px", color:"#555"}}>/ Contact Us</span></h2>
     <ul style={{fontSize:"22px", lineHeight:1.8, color:"#111", fontWeight:600, listStyle:"none", padding:0}}>
-      <li style={{marginBottom:"16px"}}>सुझाव / शिकायत / समाचार भेजने के लिए: <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
-      <li>विज्ञापन के लिए संपर्क करें: <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
+      <li style={{marginBottom:"16px"}}>सुझाव / शिकायत / समाचार भेजने के लिए (Suggestions & News): <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
+      <li>विज्ञापन के लिए संपर्क करें (For Advertising): <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
     </ul>
   </div>;
 }
 
 function PrivacyPage() {
   return <div style={{maxWidth:"900px", margin:"0 auto", padding:"64px 20px", minHeight:"60vh"}}>
-    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>गोपनीयता नीति और अस्वीकरण</h1>
+    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>गोपनीयता व अस्वीकरण <span style={{fontSize:"28px", color:"#555"}}>/ Privacy & Disclaimer</span></h1>
+    
     <p>जनार्दन न्यूज़ वेबसाइट का उपयोग करने से पहले कृपया निम्नलिखित अस्वीकरण (Disclaimer) और गोपनीयता नीति को ध्यान से पढ़ें। इस वेबसाइट का उपयोग करके, आप इन शर्तों को स्वीकार करते हैं:</p>
-    
-    <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>1. विचारों की व्यक्तिगत प्रकृति</h2>
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"40px"}}>
+      Please read the following disclaimer and privacy policy carefully before using the Janardan News website. By using this website, you accept these terms:
+    </p>
+
+    <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>1. विचारों की व्यक्तिगत प्रकृति (Personal Nature of Views)</h2>
     <p>इस न्यूज़ पोर्टल पर प्रकाशित सभी लेखों, विचार (Opinion) और संपादकीय में व्यक्त किए गए विचार और राय <strong>पूरी तरह से संबंधित लेखकों के हैं</strong>। यह आवश्यक नहीं है कि वे जनार्दन न्यूज़, इसके प्रबंधन या संपादकीय टीम की आधिकारिक नीति या विचारों को दर्शाते हों।</p>
-    
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"32px"}}>
+      All views and opinions expressed in the articles, opinions, and editorials published on this news portal are entirely those of the respective authors. They do not necessarily reflect the official policy or position of Janardan News.
+    </p>
+
     <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>2. पाठक का विवेक (Viewer Discretion)</h2>
-    <p>वेबसाइट पर दी गई सभी जानकारी केवल सूचनात्मक और शैक्षिक उद्देश्यों के लिए है। हम अपने पाठकों तक सटीक और सत्य जानकारी पहुंचाने का हर संभव प्रयास करते हैं। हालांकि, समाचार तेजी से बदलता है, इसलिए हम दी गई जानकारी की पूर्णता या सटीकता की कोई कानूनी गारंटी नहीं देते हैं। किसी भी जानकारी पर अमल करने से पहले पाठकों को अपने विवेक का उपयोग करने की सलाह दी जाती है।</p>
-    
+    <p>वेबसाइट पर दी गई सभी जानकारी केवल सूचनात्मक और शैक्षिक उद्देश्यों के लिए है। हम अपने पाठकों तक सटीक और सत्य जानकारी पहुंचाने का हर संभव प्रयास करते हैं। हालांकि, किसी भी जानकारी पर अमल करने से पहले पाठकों को अपने विवेक का उपयोग करने की सलाह दी जाती है।</p>
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"32px"}}>
+      All information provided on the website is for informational and educational purposes only. Viewers are advised to use their discretion before acting on any information.
+    </p>
+
     <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>3. बाहरी लिंक (External Links)</h2>
     <p>हमारी वेबसाइट में बाहरी वेबसाइटों (जैसे YouTube, सोशल मीडिया आदि) के लिंक हो सकते हैं। हम उन बाहरी वेबसाइटों की सामग्री या उनकी गोपनीयता प्रथाओं के लिए ज़िम्मेदार नहीं हैं।</p>
+    <p style={{fontFamily: "'Source Sans 3', sans-serif", fontSize:"18px", color:"#444", fontStyle:"italic", borderLeft:"3px solid #ddd", paddingLeft:"16px", marginBottom:"32px"}}>
+      Our website may contain links to external websites (like YouTube, social media). We are not responsible for the content or privacy practices of those external sites.
+    </p>
   </div>;
 }
 
 function PrivacyModal({ onAccept }) {
   return <div style={{position:"fixed", inset:0, background:"rgba(15,37,87,0.9)", zIndex:99999, display:"flex", alignItems:"center", justifyContent:"center", padding:"20px"}}>
-    <div style={{background:"#fff", borderRadius:"12px", padding:"40px", maxWidth:"550px", width:"100%", boxShadow:"0 20px 40px rgba(0,0,0,0.4)"}}>
+    <div style={{background:"#fff", borderRadius:"12px", padding:"40px", maxWidth:"600px", width:"100%", boxShadow:"0 20px 40px rgba(0,0,0,0.4)"}}>
       <div style={{textAlign:"center", marginBottom:"24px"}}>
         <div style={{width:"64px", height:"64px", background:"#CC0000", borderRadius:"8px", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 16px"}}><span style={{color:"#fff", fontFamily:"'Rajdhani',sans-serif", fontWeight:900, fontSize:"36px"}}>JN</span></div>
-        <h2 style={{fontFamily:"'Noto Serif Devanagari',serif", fontSize:"32px", fontWeight:900, color:"#000"}}>गोपनीयता नीति और अस्वीकरण</h2>
+        <h2 style={{fontFamily:"'Noto Serif Devanagari',serif", fontSize:"32px", fontWeight:900, color:"#000", marginBottom: "8px"}}>गोपनीयता व अस्वीकरण</h2>
+        <h3 style={{fontFamily:"'Source Sans 3',sans-serif", fontSize:"22px", fontWeight:700, color:"#555"}}>Privacy Policy & Disclaimer</h3>
       </div>
-      <p style={{fontSize:"19px", color:"#333", lineHeight:1.7, marginBottom:"32px", fontWeight:600, textAlign:"center"}}>
-        जनार्दन न्यूज़ (Janardan News) का उपयोग करने से पहले, कृपया पुष्टि करें कि आप हमारी गोपनीयता नीति से सहमत हैं। इस पोर्टल पर प्रकाशित सभी लेख और विचार संबंधित लेखकों के निजी विचार हैं।
+      <p style={{fontSize:"19px", color:"#222", lineHeight:1.6, marginBottom:"16px", fontWeight:600, textAlign:"center"}}>
+        जनार्दन न्यूज़ का उपयोग करने से पहले, कृपया पुष्टि करें कि आप हमारी गोपनीयता नीति से सहमत हैं। इस पोर्टल पर प्रकाशित सभी लेख और विचार संबंधित लेखकों के निजी विचार हैं।
+      </p>
+      <p style={{fontSize:"16px", color:"#555", lineHeight:1.6, marginBottom:"36px", fontWeight:500, textAlign:"center", fontFamily: "'Source Sans 3', sans-serif"}}>
+        Before using Janardan News, please confirm you agree to our privacy policy. All articles and opinions published on this portal are the personal views of the respective authors. Viewer discretion is advised.
       </p>
       <div style={{display:"flex", gap:"16px", flexDirection:"column"}}>
-        <button onClick={onAccept} style={{width:"100%", background:"#CC0000", color:"#fff", padding:"16px", border:"none", borderRadius:"8px", fontSize:"22px", fontWeight:900, cursor:"pointer", fontFamily:"'Rajdhani',sans-serif"}}>मैं सहमत हूँ (Accept & Continue)</button>
+        <button onClick={onAccept} style={{width:"100%", background:"#CC0000", color:"#fff", padding:"16px", border:"none", borderRadius:"8px", fontSize:"24px", fontWeight:900, cursor:"pointer", fontFamily:"'Rajdhani',sans-serif"}}>मैं सहमत हूँ / I Accept & Continue</button>
       </div>
     </div>
   </div>;
@@ -342,9 +366,9 @@ function Footer({handleNav, sLinks}){
         
         <div>
           <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"20px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"24px",paddingBottom:"12px",borderBottom:"4px solid "+R}}>संपर्क करें</div>
-          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>सुझाव / शिकायत / समाचार भेजने के लिए:</div>
+          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>सुझाव / शिकायत / समाचार (Suggestions):</div>
           <div style={{fontSize:"20px",fontWeight:800,color:"#fff",display:"flex",alignItems:"center",gap:"12px",marginBottom:"24px"}}><Mail size={18}/> sudhakarjhanews@gmail.com</div>
-          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>विज्ञापन के लिए संपर्क करें:</div>
+          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>विज्ञापन के लिए (Advertising):</div>
           <div style={{fontSize:"20px",fontWeight:800,color:"#fff",display:"flex",alignItems:"center",gap:"12px",marginBottom:"24px"}}><Mail size={18}/> sudhakarjhanews@gmail.com</div>
         </div>
       </div>
@@ -407,10 +431,26 @@ function JanardanNews(){
 
   const socialLinks = [{Icon: Facebook, url: settings?.facebook || "#"}, {Icon: Twitter, url: settings?.twitter || "#"}, {Icon: Instagram, url: settings?.instagram || "#"}, {Icon: Youtube, url: settings?.youtube || "#"}];
 
-  const breakingArts = dbArts.filter(a => a.breaking);
-  const tickerText = breakingArts.length > 0 
-    ? breakingArts.map(a => a.title).join("   ✦   ") 
-    : "झारखंड और दुनिया भर के ताज़ा समाचार अपडेट के लिए बने रहें।";
+  // --- AUTOMATED BREAKING NEWS LOGIC ---
+  const today = new Date();
+  const isToday = (dateStr) => {
+    if (!dateStr) return false;
+    try {
+      const d = new Date(dateStr);
+      return d.getDate() === today.getDate() && d.getMonth() === today.getMonth() && d.getFullYear() === today.getFullYear();
+    } catch(e) { return false; }
+  };
+
+  // Find articles published TODAY or manually marked as Breaking in CMS
+  const todaysArts = dbArts.filter(a => isToday(a.date) || a.breaking);
+  
+  // If no articles match today, automatically show the 5 most recent articles
+  const tickerArts = todaysArts.length > 0 ? todaysArts : dbArts.slice(0, 5);
+
+  const tickerText = tickerArts.length > 0 
+    ? tickerArts.map(a => a.title).join("   ✦   ") 
+    : "झारखंड और दुनिया भर के ताज़ा समाचार अपडेट के लिए बने रहें। (Stay tuned for latest updates.)";
+  // -------------------------------------
 
   const handleNavClick = (item) => {
     setMenuOpen(false);
@@ -436,7 +476,7 @@ function JanardanNews(){
 
   if(loading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontFamily:"'Rajdhani',sans-serif",fontSize:"28px",fontWeight:900,color:N}}>Janardan Database से जुड़ रहा है…</div>;
 
-  return <div style={{background:"#F9FAFB",color:"#000",minHeight:"100vh", position: "relative"}}>
+  return <div style={{background:"#F9FAFB",color:"#000",minHeight:"100vh", position: "relative", overflowX:"hidden"}}>
     
     {!privacyAccepted && <PrivacyModal onAccept={acceptPrivacy} />}
 
@@ -455,7 +495,7 @@ function JanardanNews(){
       <div style={{display:"flex",alignItems:"center",gap:"20px"}}><button onClick={()=>setMenuOpen(true)} style={{background:"none",border:"none",cursor:"pointer",padding:"8px",background:"#F5F7FA",borderRadius:"8px"}}><Menu size={36} color={N}/></button></div>
     </div></header>
     
-    <div style={{background:R,height:"52px",display:"flex",alignItems:"center",borderBottom:"4px solid #990000"}}><div style={{background:"#990000",padding:"0 24px",height:"100%",display:"flex",alignItems:"center",flexShrink:0,boxShadow:"4px 0 12px rgba(0,0,0,.2)",zIndex:2}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"17px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {T.brk}</span></div><div className="jticker-container"><div className="jticker">{tickerText}</div></div></div>
+    <div style={{background:R,height:"52px",display:"flex",alignItems:"center",borderBottom:"4px solid #990000"}}><div style={{background:"#990000",padding:"0 24px",height:"100%",display:"flex",alignItems:"center",flexShrink:0,boxShadow:"4px 0 12px rgba(0,0,0,.2)",zIndex:2}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"17px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {T.brk}</span></div><div className="jticker-container"><div className="jticker" style={{animationDuration: `${Math.max(35, tickerText.length * 0.15)}s`}}>{tickerText}</div></div></div>
     
     <nav style={{background:N,borderBottom:"5px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex",justifyContent:"space-between"}}><div style={{display:"flex"}}>{T.nav.map((item,i)=><span key={i} className={`jnl${(item==="होम"&&page==="home")||(item==="हमारे बारे में"&&page==="about")||(item==="नीति व अस्वीकरण"&&page==="privacy")||(page==="category"&&item===activeCat)?" active":""}`} onClick={()=>handleNavClick(item)}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
     
