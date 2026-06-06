@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Rajdhani:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;0,900;1,700&family=Rajdhani:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 @keyframes tick{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
@@ -21,7 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 p {
-  font-size: 20px; /* Increased for mobile */
+  font-size: 20px; 
   line-height: 1.8; 
   color: #111111; 
   margin-bottom: 24px;
@@ -36,7 +36,7 @@ h1, h2, h3, h4 {
 .jticker { display:inline-block; white-space:nowrap; animation:tick 30s linear infinite; font-family:'Rajdhani',sans-serif; font-weight:800; font-size:17px; color:#fff; letter-spacing: 0.5px;}
 .jticker:hover { animation-play-state: paused; }
 
-.jcard { cursor:pointer; transition:transform .2s,box-shadow .2s; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden; padding-bottom: 12px; }
+.jcard { cursor:pointer; transition:transform .2s,box-shadow .2s; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden; padding-bottom: 12px; height: 100%; display: flex; flex-direction: column; }
 .jcard:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.08); }
 .jcard-flat { cursor:pointer; transition:background .2s; padding-bottom: 16px; border-bottom: 1px solid #EBEBEB; margin-bottom: 16px; display: flex; gap: 16px; }
 .jcard-flat:hover { background: #fdfdfd; }
@@ -53,7 +53,7 @@ h1, h2, h3, h4 {
 .jsect { font-family:'Rajdhani',sans-serif; font-weight:900; font-size:26px; letter-spacing:1px; text-transform:uppercase; color:#0F2557; border-left:6px solid #CC0000; padding-left:14px; }
 .jrule { height:4px; background:linear-gradient(to right,#CC0000,rgba(204,0,0,.1),transparent); margin:10px 0 24px; }
 
-.jbadge { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:3px; display:inline-block; margin: 12px 12px 8px; }
+.jbadge { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:3px; display:inline-block; margin: 12px 12px 8px; align-self: flex-start;}
 .jbadge-flat { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:3px; display:inline-block; margin-bottom: 6px; }
 
 .jbtn { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:16px; letter-spacing:1px; text-transform:uppercase; background:#CC0000; color:#fff; border:none; padding:12px 24px; border-radius:4px; cursor:pointer; }
@@ -124,7 +124,7 @@ const T = {
   lat: "ताज़ा खबरें", pk: "संपादक की पसंद", op: "विचार और संपादकीय", vd: "वीडियो रिपोर्ट",
   nl: "न्यूज़लेटर", nls: "हर सुबह भारत और झारखंड की सबसे विश्वसनीय पत्रकारिता आपके इनबॉक्स में।",
   emph: "अपना ईमेल पता दर्ज करें", subt: "मुफ़्त सदस्यता लें", mr: "मिनट",
-  nav: ["होम", "झारखंड", "राष्ट्रीय", "राजनीति", "तकनीक", "कृषि", "स्वास्थ्य", "शिक्षा", "खेल", "विचार", "मनोरंजन"]
+  nav: ["होम", "झारखंड", "राष्ट्रीय", "राजनीति", "तकनीक", "कृषि", "स्वास्थ्य", "शिक्षा", "खेल", "विचार", "मनोरंजन", "हमारे बारे में", "नीति व अस्वीकरण"]
 };
 
 const DEFAULT_HERO = {id:"welcome", cat:"राष्ट्रीय", title:"जनार्दन न्यूज़ एडमिन डैशबोर्ड में आपका स्वागत है", summary:"आपका संपादकीय मंच पूरी तरह से तैयार है। अब आप अपने समाचार लेख और यूट्यूब वीडियो प्रकाशित कर सकते हैं।", body:"अपना सुरक्षित डैशबोर्ड एक्सेस करने के लिए शीर्ष मेनू में '⚙ ADMIN' बटन पर क्लिक करें।\n\nवहां से, आप चित्र अपलोड कर सकते हैं, हेडलाइंस लिख सकते हैं, और सीधे अपने पहले पृष्ठ पर समाचार प्रकाशित कर सकते हैं।", author:"Admin", date: new Date().toLocaleDateString(), rt: 2, img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80", feat:true};
@@ -148,9 +148,9 @@ function ACard({a, open, size}){
     <div className="jcard" onClick={()=>open(a)}>
       <div className="jzoom" style={{height:"210px",borderBottom:"1px solid #EEE"}}><img src={a.img} alt={a.title}/></div>
       <span className="jbadge" style={{background:cc(a.cat)}}>{a.cat}</span>
-      <h3 style={{padding:"0 14px",fontSize:"21px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"10px"}}>{a.title}</h3>
+      <h3 style={{padding:"0 14px",fontSize:"21px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"10px", flex: 1}}>{a.title}</h3>
       {a.summary && <p style={{padding:"0 14px",color:"#333",fontSize:"17px",lineHeight:1.6,marginBottom:"12px",fontWeight:600}}>{a.summary.slice(0,95)}…</p>}
-      <div style={{padding:"0 14px",display:"flex",gap:"10px",color:"#888",fontSize:"14px",fontWeight:700,alignItems:"center"}}><Clock size={13}/><span>{a.rt} {T.mr} पढ़ने का समय</span></div>
+      <div style={{padding:"0 14px 12px",display:"flex",gap:"10px",color:"#888",fontSize:"14px",fontWeight:700,alignItems:"center"}}><Clock size={13}/><span>{a.rt} {T.mr} पढ़ने का समय</span></div>
     </div>
   );
 }
@@ -160,8 +160,7 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
   const remaining = arts.filter(a => a.id !== hero.id);
   const lat = remaining.slice(0,4);
   const picks = remaining.filter(a=>a.pick).slice(0,4);
-  const side = remaining.slice(0,3);
-
+  
   return <div>
     <section style={{maxWidth:MW,margin:"0 auto",padding:"36px 20px",borderBottom:"1px solid #EBEBEB"}}>
       <div className="jh2col" style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:"36px"}}>
@@ -198,7 +197,7 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
                 <img src={`https://img.youtube.com/vi/${v.vid}/hqdefault.jpg`} alt={v.title} style={{width:"100%",height:"100%",objectFit:"cover",opacity:.8}}/>
                 <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{width:"64px",height:"64px",background:R,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 16px rgba(0,0,0,.4)"}}><Play size={28} color="#fff" style={{marginLeft:"6px"}}/></div></div>
               </div>
-              <div style={{padding:"20px",background:"#fff"}}>
+              <div style={{padding:"20px",background:"#fff", flex: 1}}>
                 <h3 style={{fontSize:"20px",fontWeight:900,lineHeight:1.4,color:"#111"}}>{v.title}</h3>
               </div>
             </a>
@@ -224,6 +223,29 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
   </div>;
 }
 
+function CategoryPage({cat, arts, open}) {
+  const catArts = arts.filter(a => a.cat === cat);
+  return <div style={{maxWidth:MW, margin:"0 auto", padding:"48px 20px", minHeight:"60vh"}}>
+    <div style={{display:"flex", alignItems:"center", gap:"16px", marginBottom:"16px"}}>
+      <h1 style={{fontSize:"40px", fontWeight:900, color:"#0F2557", margin:0, fontFamily:"'Noto Serif Devanagari',serif"}}>{cat}</h1>
+      <span style={{background:R, color:"#fff", padding:"4px 12px", borderRadius:"20px", fontSize:"14px", fontWeight:800, fontFamily:"'Rajdhani',sans-serif"}}>श्रेणी (Category)</span>
+    </div>
+    <Rule/>
+    
+    {catArts.length > 0 ? (
+      <div className="j4col" style={{display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:"28px", marginTop:"32px"}}>
+        {catArts.map(a => <ACard key={a.id} a={a} open={open}/>)}
+      </div>
+    ) : (
+      <div style={{textAlign:"center", padding:"80px 20px", background:"#fff", borderRadius:"12px", border:"1px solid #EBEBEB", marginTop:"32px"}}>
+        <div style={{fontSize:"56px", marginBottom:"20px"}}>📰</div>
+        <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginBottom:"12px"}}>इस श्रेणी में अभी कोई खबर नहीं है</h2>
+        <p style={{fontSize:"19px", color:"#666", fontWeight:600}}>कृपया ताज़ा अपडेट के लिए प्रतीक्षा करें। हम जल्द ही यहाँ नई खबरें प्रकाशित करेंगे।</p>
+      </div>
+    )}
+  </div>;
+}
+
 function ArticlePage({a, goHome, related, open}){
   return <div>
     <div style={{maxWidth:"900px",margin:"0 auto",padding:"48px 20px"}}>
@@ -239,7 +261,6 @@ function ArticlePage({a, goHome, related, open}){
         <div style={{fontSize:"22px",lineHeight:1.9,color:"#111",fontWeight:500}}>{(a.body||a.summary||"").split("\n\n").map((p,i)=><p key={i} style={{marginBottom:"32px"}}>{p}</p>)}</div>
       </article>
     </div>
-    
     <div style={{background:"#F9FAFB",padding:"56px 0",borderTop:"1px solid #EBEBEB"}}>
       <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
         <SH title={T.lat}/><Rule/>
@@ -249,12 +270,60 @@ function ArticlePage({a, goHome, related, open}){
   </div>;
 }
 
-function Footer({goHome, sLinks}){
+function AboutPage() {
+  return <div style={{maxWidth:"900px", margin:"0 auto", padding:"64px 20px", minHeight:"60vh"}}>
+    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>हमारे बारे में</h1>
+    <p><strong>जनार्दन न्यूज़ (Janardan News)</strong> एक स्वतंत्र और निष्पक्ष डिजिटल समाचार पोर्टल है। हमारा विशेष फोकस झारखंड राज्य की राजनीतिक, सामाजिक, और सांस्कृतिक घटनाओं के साथ-साथ राष्ट्रीय स्तर की महत्वपूर्ण खबरों पर है।</p>
+    <p>हम मानते हैं कि एक मजबूत लोकतंत्र और जागरूक समाज के लिए नागरिकों तक बिना किसी पूर्वाग्रह (Unbiased) के, सटीक और पारदर्शी जानकारी पहुंचना अनिवार्य है। जनार्दन न्यूज़ इसी दिशा में एक प्रयास है, जहां हम जमीनी हकीकत को पूरी ईमानदारी के साथ आप तक पहुंचाते हैं।</p>
+    <p>हमारा लक्ष्य केवल सूचना देना नहीं है, बल्कि उस सूचना के पीछे के तथ्यों और विश्लेषण को सामने लाना है ताकि हमारे पाठक जागरूक फैसले ले सकें।</p>
+    
+    <h2 style={{fontSize:"32px", fontWeight:900, color:"#0F2557", marginTop:"48px", marginBottom:"20px"}}>संपर्क करें</h2>
+    <ul style={{fontSize:"22px", lineHeight:1.8, color:"#111", fontWeight:600, listStyle:"none", padding:0}}>
+      <li style={{marginBottom:"16px"}}>सुझाव / शिकायत / समाचार भेजने के लिए: <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
+      <li>विज्ञापन के लिए संपर्क करें: <strong style={{color:"#CC0000"}}>sudhakarjhanews@gmail.com</strong></li>
+    </ul>
+  </div>;
+}
+
+function PrivacyPage() {
+  return <div style={{maxWidth:"900px", margin:"0 auto", padding:"64px 20px", minHeight:"60vh"}}>
+    <h1 style={{fontSize:"44px", fontWeight:900, color:"#000", marginBottom:"32px", borderBottom:"5px solid #CC0000", display:"inline-block", paddingBottom:"12px"}}>गोपनीयता नीति और अस्वीकरण</h1>
+    <p>जनार्दन न्यूज़ वेबसाइट का उपयोग करने से पहले कृपया निम्नलिखित अस्वीकरण (Disclaimer) और गोपनीयता नीति को ध्यान से पढ़ें। इस वेबसाइट का उपयोग करके, आप इन शर्तों को स्वीकार करते हैं:</p>
+    
+    <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>1. विचारों की व्यक्तिगत प्रकृति</h2>
+    <p>इस न्यूज़ पोर्टल पर प्रकाशित सभी लेखों, विचार (Opinion) और संपादकीय में व्यक्त किए गए विचार और राय <strong>पूरी तरह से संबंधित लेखकों के हैं</strong>। यह आवश्यक नहीं है कि वे जनार्दन न्यूज़, इसके प्रबंधन या संपादकीय टीम की आधिकारिक नीति या विचारों को दर्शाते हों।</p>
+    
+    <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>2. पाठक का विवेक (Viewer Discretion)</h2>
+    <p>वेबसाइट पर दी गई सभी जानकारी केवल सूचनात्मक और शैक्षिक उद्देश्यों के लिए है। हम अपने पाठकों तक सटीक और सत्य जानकारी पहुंचाने का हर संभव प्रयास करते हैं। हालांकि, समाचार तेजी से बदलता है, इसलिए हम दी गई जानकारी की पूर्णता या सटीकता की कोई कानूनी गारंटी नहीं देते हैं। किसी भी जानकारी पर अमल करने से पहले पाठकों को अपने विवेक का उपयोग करने की सलाह दी जाती है।</p>
+    
+    <h2 style={{fontSize:"28px", fontWeight:900, color:"#0F2557", marginTop:"40px", marginBottom:"16px"}}>3. बाहरी लिंक (External Links)</h2>
+    <p>हमारी वेबसाइट में बाहरी वेबसाइटों (जैसे YouTube, सोशल मीडिया आदि) के लिंक हो सकते हैं। हम उन बाहरी वेबसाइटों की सामग्री या उनकी गोपनीयता प्रथाओं के लिए ज़िम्मेदार नहीं हैं।</p>
+  </div>;
+}
+
+function PrivacyModal({ onAccept }) {
+  return <div style={{position:"fixed", inset:0, background:"rgba(15,37,87,0.9)", zIndex:99999, display:"flex", alignItems:"center", justifyContent:"center", padding:"20px"}}>
+    <div style={{background:"#fff", borderRadius:"12px", padding:"40px", maxWidth:"550px", width:"100%", boxShadow:"0 20px 40px rgba(0,0,0,0.4)"}}>
+      <div style={{textAlign:"center", marginBottom:"24px"}}>
+        <div style={{width:"64px", height:"64px", background:"#CC0000", borderRadius:"8px", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 16px"}}><span style={{color:"#fff", fontFamily:"'Rajdhani',sans-serif", fontWeight:900, fontSize:"36px"}}>JN</span></div>
+        <h2 style={{fontFamily:"'Noto Serif Devanagari',serif", fontSize:"32px", fontWeight:900, color:"#000"}}>गोपनीयता नीति और अस्वीकरण</h2>
+      </div>
+      <p style={{fontSize:"19px", color:"#333", lineHeight:1.7, marginBottom:"32px", fontWeight:600, textAlign:"center"}}>
+        जनार्दन न्यूज़ (Janardan News) का उपयोग करने से पहले, कृपया पुष्टि करें कि आप हमारी गोपनीयता नीति से सहमत हैं। इस पोर्टल पर प्रकाशित सभी लेख और विचार संबंधित लेखकों के निजी विचार हैं।
+      </p>
+      <div style={{display:"flex", gap:"16px", flexDirection:"column"}}>
+        <button onClick={onAccept} style={{width:"100%", background:"#CC0000", color:"#fff", padding:"16px", border:"none", borderRadius:"8px", fontSize:"22px", fontWeight:900, cursor:"pointer", fontFamily:"'Rajdhani',sans-serif"}}>मैं सहमत हूँ (Accept & Continue)</button>
+      </div>
+    </div>
+  </div>;
+}
+
+function Footer({handleNav, sLinks}){
   return <footer style={{background:DN,paddingTop:"64px"}}>
     <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
       <div className="j4col" style={{display:"grid",gridTemplateColumns:"2fr 1fr 2fr",gap:"48px",marginBottom:"56px"}}>
         <div>
-          <div style={{display:"flex",alignItems:"center",gap:"16px",marginBottom:"24px",cursor:"pointer"}} onClick={goHome}>
+          <div style={{display:"flex",alignItems:"center",gap:"16px",marginBottom:"24px",cursor:"pointer"}} onClick={()=>handleNav("होम")}>
             <div style={{width:"64px",height:"64px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"36px",lineHeight:1}}>JN</span></div>
             <div>
               <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"32px",letterSpacing:"1.5px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
@@ -266,7 +335,9 @@ function Footer({goHome, sLinks}){
         
         <div>
           <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"20px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"24px",paddingBottom:"12px",borderBottom:"4px solid "+R}}>महत्वपूर्ण लिंक</div>
-          {T.nav.slice(0,6).map((l,i)=><span key={i} className="jflink" onClick={goHome}>{l}</span>)}
+          <span className="jflink" onClick={()=>handleNav("हमारे बारे में")}>हमारे बारे में (About Us)</span>
+          <span className="jflink" onClick={()=>handleNav("नीति व अस्वीकरण")}>नीति व अस्वीकरण (Privacy)</span>
+          {T.nav.slice(0,6).map((l,i)=><span key={i} className="jflink" onClick={()=>handleNav(l)}>{l}</span>)}
         </div>
         
         <div>
@@ -286,11 +357,13 @@ function Footer({goHome, sLinks}){
 
 function JanardanNews(){
   const [page,setPage]=useState("home");
+  const [activeCat, setActiveCat]=useState(null);
   const [menuOpen,setMenuOpen]=useState(false);
   const [sel,setSel]=useState(null);
   const [email,setEmail]=useState("");
   const [subbed,setSubbed]=useState(false);
   const [istTime, setIstTime] = useState("");
+  const [privacyAccepted, setPrivacyAccepted] = useState(true); 
   
   const [dbArts, setDbArts] = useState([]);
   const [dbVids, setDbVids] = useState([]);
@@ -298,6 +371,10 @@ function JanardanNews(){
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if(!localStorage.getItem('jn_privacy_accepted')){
+      setPrivacyAccepted(false);
+    }
+
     Promise.all([
       fetch('/data/articles.json').then(res => res.ok ? res.json() : null).catch(() => null),
       fetch('/data/videos.json').then(res => res.ok ? res.json() : null).catch(() => null),
@@ -323,26 +400,52 @@ function JanardanNews(){
     setIstTime(d + " (IST)");
   },[]);
 
+  const acceptPrivacy = () => {
+    localStorage.setItem('jn_privacy_accepted', 'true');
+    setPrivacyAccepted(true);
+  };
+
   const socialLinks = [{Icon: Facebook, url: settings?.facebook || "#"}, {Icon: Twitter, url: settings?.twitter || "#"}, {Icon: Instagram, url: settings?.instagram || "#"}, {Icon: Youtube, url: settings?.youtube || "#"}];
 
-  // Dynamic Breaking News Logic
   const breakingArts = dbArts.filter(a => a.breaking);
   const tickerText = breakingArts.length > 0 
     ? breakingArts.map(a => a.title).join("   ✦   ") 
     : "झारखंड और दुनिया भर के ताज़ा समाचार अपडेट के लिए बने रहें।";
 
-  const open=a=>{setSel(a);setPage("article");setMenuOpen(false);window.scrollTo(0,0);};
-  const goHome=()=>{setPage("home");setSel(null);};
+  const handleNavClick = (item) => {
+    setMenuOpen(false);
+    window.scrollTo(0,0);
+    setSel(null);
+    
+    if(item === "हमारे बारे में") {
+      setPage("about");
+      setActiveCat(null);
+    } else if(item === "नीति व अस्वीकरण") {
+      setPage("privacy");
+      setActiveCat(null);
+    } else if(item === "होम") {
+      setPage("home");
+      setActiveCat(null);
+    } else {
+      setPage("category");
+      setActiveCat(item);
+    }
+  };
+
+  const open=a=>{setSel(a);setPage("article");setActiveCat(null);setMenuOpen(false);window.scrollTo(0,0);};
 
   if(loading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontFamily:"'Rajdhani',sans-serif",fontSize:"28px",fontWeight:900,color:N}}>Janardan Database से जुड़ रहा है…</div>;
 
-  return <div style={{background:"#F9FAFB",color:"#000",minHeight:"100vh"}}>
-    {menuOpen&&<div className="jmenu"><div style={{background:DN,padding:"24px 28px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"4px solid "+R}}><div style={{display:"flex",alignItems:"center",gap:"14px"}}><div style={{width:"52px",height:"52px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px"}}>JN</span></div><span style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></span></div><button onClick={()=>setMenuOpen(false)} style={{background:"none",border:"none",cursor:"pointer"}}><X size={36} color="#fff"/></button></div>{T.nav.map((item,i)=><span key={i} className="jmi" onClick={()=>{setMenuOpen(false);goHome();}}>{item}</span>)}<a href="/admin/" className="jmi" style={{color:R}}>⚙ Admin Login</a></div>}
+  return <div style={{background:"#F9FAFB",color:"#000",minHeight:"100vh", position: "relative"}}>
+    
+    {!privacyAccepted && <PrivacyModal onAccept={acceptPrivacy} />}
+
+    {menuOpen&&<div className="jmenu"><div style={{background:DN,padding:"24px 28px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"4px solid "+R}}><div style={{display:"flex",alignItems:"center",gap:"14px"}}><div style={{width:"52px",height:"52px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px"}}>JN</span></div><span style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></span></div><button onClick={()=>setMenuOpen(false)} style={{background:"none",border:"none",cursor:"pointer"}}><X size={36} color="#fff"/></button></div>{T.nav.map((item,i)=><span key={i} className="jmi" onClick={()=>handleNavClick(item)}>{item}</span>)}<a href="/admin/" className="jmi" style={{color:R}}>⚙ Admin Login</a></div>}
     
     <div style={{background:DN,padding:"12px 0"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="jtm" style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"17px",fontWeight:900,color:"#fff",letterSpacing:"1px"}}>{istTime}</span><div style={{display:"flex",gap:"20px"}}>{socialLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{color:"#fff", transition:"opacity .2s"}} onMouseOver={e=>e.currentTarget.style.opacity=.7} onMouseOut={e=>e.currentTarget.style.opacity=1}><Icon size={18}/></a>)}</div></div></div>
     
-    <header style={{background:"#fff",padding:"24px 0",boxShadow:"0 4px 16px rgba(0,0,0,.04)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
-      <div onClick={goHome} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"20px"}}>
+    <header style={{background:"#fff",padding:"24px 0",boxShadow:"0 4px 16px rgba(0,0,0,.04)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",paddingPA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
+      <div onClick={()=>handleNavClick("होम")} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"20px"}}>
         <div style={{width:"72px",height:"72px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 12px rgba(204,0,0,.3)"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"42px",lineHeight:1}}>JN</span></div>
         <div>
           <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"40px",letterSpacing:"1.5px",color:N,lineHeight:1.1}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
@@ -354,13 +457,16 @@ function JanardanNews(){
     
     <div style={{background:R,height:"52px",display:"flex",alignItems:"center",borderBottom:"4px solid #990000"}}><div style={{background:"#990000",padding:"0 24px",height:"100%",display:"flex",alignItems:"center",flexShrink:0,boxShadow:"4px 0 12px rgba(0,0,0,.2)",zIndex:2}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"17px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {T.brk}</span></div><div className="jticker-container"><div className="jticker">{tickerText}</div></div></div>
     
-    <nav style={{background:N,borderBottom:"5px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex",justifyContent:"space-between"}}><div style={{display:"flex"}}>{T.nav.map((item,i)=><span key={i} className={`jnl${i===0&&page==="home"?" active":""}`} onClick={goHome}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
+    <nav style={{background:N,borderBottom:"5px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex",justifyContent:"space-between"}}><div style={{display:"flex"}}>{T.nav.map((item,i)=><span key={i} className={`jnl${(item==="होम"&&page==="home")||(item==="हमारे बारे में"&&page==="about")||(item==="नीति व अस्वीकरण"&&page==="privacy")||(page==="category"&&item===activeCat)?" active":""}`} onClick={()=>handleNavClick(item)}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
     
     <main>
-      {page==="home"&&<HomePage arts={dbArts} vids={dbVids} open={open} email={email} setEmail={setEmail} subbed={subbed} setSub={setSubbed}/>}
-      {page==="article"&&sel&&<ArticlePage a={sel} goHome={goHome} related={dbArts.filter(x=>x.id!==sel.id).slice(0,4)} open={open}/>}
+      {page==="home" && <HomePage arts={dbArts} vids={dbVids} open={open} email={email} setEmail={setEmail} subbed={subbed} setSub={setSubbed}/>}
+      {page==="article" && sel && <ArticlePage a={sel} goHome={()=>handleNavClick("होम")} related={dbArts.filter(x=>x.id!==sel.id).slice(0,4)} open={open}/>}
+      {page==="category" && activeCat && <CategoryPage cat={activeCat} arts={dbArts} open={open} />}
+      {page==="about" && <AboutPage />}
+      {page==="privacy" && <PrivacyPage />}
     </main>
-    <Footer goHome={goHome} sLinks={socialLinks}/>
+    <Footer handleNav={handleNavClick} sLinks={socialLinks}/>
   </div>;
 }
 
