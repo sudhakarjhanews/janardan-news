@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;0,900;1,700&family=Rajdhani:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Rajdhani:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 @keyframes tick{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
@@ -444,7 +444,7 @@ function JanardanNews(){
     
     <div style={{background:DN,padding:"12px 0"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="jtm" style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"17px",fontWeight:900,color:"#fff",letterSpacing:"1px"}}>{istTime}</span><div style={{display:"flex",gap:"20px"}}>{socialLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{color:"#fff", transition:"opacity .2s"}} onMouseOver={e=>e.currentTarget.style.opacity=.7} onMouseOut={e=>e.currentTarget.style.opacity=1}><Icon size={18}/></a>)}</div></div></div>
     
-    <header style={{background:"#fff",padding:"24px 0",boxShadow:"0 4px 16px rgba(0,0,0,.04)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",paddingPA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
+    <header style={{background:"#fff",padding:"24px 0",boxShadow:"0 4px 16px rgba(0,0,0,.04)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
       <div onClick={()=>handleNavClick("होम")} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"20px"}}>
         <div style={{width:"72px",height:"72px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 12px rgba(204,0,0,.3)"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"42px",lineHeight:1}}>JN</span></div>
         <div>
