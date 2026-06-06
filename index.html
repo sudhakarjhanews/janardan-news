@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Rajdhani:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Rajdhani:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Devanagari:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 @keyframes tick{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
@@ -21,7 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 p {
-  font-size: 19px; /* Increased for better mobile reading */
+  font-size: 20px; /* Increased for mobile */
   line-height: 1.8; 
   color: #111111; 
   margin-bottom: 24px;
@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 }
 
 .jticker-container { flex:1; overflow:hidden; position: relative; height: 100%; display: flex; alignItems: center; }
-.jticker { display:inline-block; white-space:nowrap; animation:tick 30s linear infinite; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:16px; color:#fff; }
+.jticker { display:inline-block; white-space:nowrap; animation:tick 30s linear infinite; font-family:'Rajdhani',sans-serif; font-weight:800; font-size:17px; color:#fff; letter-spacing: 0.5px;}
 .jticker:hover { animation-play-state: paused; }
 
 .jcard { cursor:pointer; transition:transform .2s,box-shadow .2s; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden; padding-bottom: 12px; }
@@ -46,27 +46,27 @@ h1, h2, h3, h4 {
 .jcard:hover .jzoom img { transform:scale(1.04); }
 .jcard-flat:hover .jzoom img { transform:scale(1.04); }
 
-.jnl { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:16px; letter-spacing:.5px; text-transform:uppercase; color:rgba(255,255,255,.9); padding:14px 18px; cursor:pointer; white-space:nowrap; display:inline-block; transition:background .15s; border-bottom:4px solid transparent; text-decoration: none; }
+.jnl { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:17px; letter-spacing:.5px; text-transform:uppercase; color:rgba(255,255,255,.9); padding:14px 18px; cursor:pointer; white-space:nowrap; display:inline-block; transition:background .15s; border-bottom:4px solid transparent; text-decoration: none; }
 .jnl:hover { color:#fff; background:rgba(255,255,255,.1); }
 .jnl.active { color:#fff; border-bottom-color:#CC0000; }
 
-.jsect { font-family:'Rajdhani',sans-serif; font-weight:900; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#0F2557; border-left:6px solid #CC0000; padding-left:14px; }
+.jsect { font-family:'Rajdhani',sans-serif; font-weight:900; font-size:26px; letter-spacing:1px; text-transform:uppercase; color:#0F2557; border-left:6px solid #CC0000; padding-left:14px; }
 .jrule { height:4px; background:linear-gradient(to right,#CC0000,rgba(204,0,0,.1),transparent); margin:10px 0 24px; }
 
-.jbadge { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:3px; display:inline-block; margin: 12px 12px 8px; }
-.jbadge-flat { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:3px; display:inline-block; margin-bottom: 6px; }
+.jbadge { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:4px 10px; border-radius:3px; display:inline-block; margin: 12px 12px 8px; }
+.jbadge-flat { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:3px 8px; border-radius:3px; display:inline-block; margin-bottom: 6px; }
 
-.jbtn { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:15px; letter-spacing:1px; text-transform:uppercase; background:#CC0000; color:#fff; border:none; padding:12px 24px; border-radius:4px; cursor:pointer; }
+.jbtn { font-family:'Rajdhani',sans-serif; font-weight:800; font-size:16px; letter-spacing:1px; text-transform:uppercase; background:#CC0000; color:#fff; border:none; padding:12px 24px; border-radius:4px; cursor:pointer; }
 .jbtn:hover { background:#990000; }
 
-.jflink { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight: 600; color:#B0B5C0; display:block; margin-bottom:12px; cursor:pointer; text-decoration: none; }
+.jflink { font-family:'Rajdhani',sans-serif; font-size:18px; font-weight: 700; color:#B0B5C0; display:block; margin-bottom:12px; cursor:pointer; text-decoration: none; }
 .jflink:hover { color:#fff; text-decoration: underline; }
 
 .jmenu { position:fixed; inset:0; background:#0F2557; z-index:1000; overflow-y:auto; }
-.jmi { padding:16px 24px; border-bottom:1px solid rgba(255,255,255,.1); color:#fff; font-family:'Rajdhani',sans-serif; font-size:18px; font-weight:700; cursor:pointer; text-decoration: none; display: block; }
+.jmi { padding:18px 24px; border-bottom:1px solid rgba(255,255,255,.1); color:#fff; font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:800; cursor:pointer; text-decoration: none; display: block; }
 .jmi:hover { background:rgba(255,255,255,.07); }
 
-.ainp { width:100%; padding:12px 14px; border:2px solid #E0E0E0; border-radius:4px; font-size:16px; font-family:inherit; outline:none; font-weight: 600; }
+.ainp { width:100%; padding:14px; border:2px solid #E0E0E0; border-radius:4px; font-size:17px; font-family:inherit; outline:none; font-weight: 600; }
 .ainp:focus { border-color:#0F2557; }
 
 ::-webkit-scrollbar { width:6px; height:6px; }
@@ -77,7 +77,7 @@ h1, h2, h3, h4 {
   .j2col { grid-template-columns:1fr!important; }
   .j4col { grid-template-columns:1fr 1fr!important; }
   .jtm { display:none!important; }
-  p { font-size: 18px; }
+  p { font-size: 19px; }
 }
 @media(max-width:480px) {
   .j4col { grid-template-columns:1fr!important; }
@@ -85,7 +85,7 @@ h1, h2, h3, h4 {
 </style>
 </head>
 <body>
-<div id="root"><div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Rajdhani,sans-serif;font-size:22px;font-weight:800;color:#0F2557;">Loading Janardan News…</div></div>
+<div id="root"><div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Rajdhani,sans-serif;font-size:24px;font-weight:900;color:#0F2557;">Loading Janardan News…</div></div>
 
 <script>
   if (window.netlifyIdentity) {
@@ -123,34 +123,34 @@ const T = {
   n1: "जनार्दन", n2: "न्यूज़", tag: "सत्य। तथ्य। जन की आवाज़।", brk: "ब्रेकिंग न्यूज़",
   lat: "ताज़ा खबरें", pk: "संपादक की पसंद", op: "विचार और संपादकीय", vd: "वीडियो रिपोर्ट",
   nl: "न्यूज़लेटर", nls: "हर सुबह भारत और झारखंड की सबसे विश्वसनीय पत्रकारिता आपके इनबॉक्स में।",
-  emph: "आपका ईमेल पता दर्ज करें", subt: "मुफ़्त सदस्यता लें", mr: "मिनट",
+  emph: "अपना ईमेल पता दर्ज करें", subt: "मुफ़्त सदस्यता लें", mr: "मिनट",
   nav: ["होम", "झारखंड", "राष्ट्रीय", "राजनीति", "तकनीक", "कृषि", "स्वास्थ्य", "शिक्षा", "खेल", "विचार", "मनोरंजन"]
 };
 
 const DEFAULT_HERO = {id:"welcome", cat:"राष्ट्रीय", title:"जनार्दन न्यूज़ एडमिन डैशबोर्ड में आपका स्वागत है", summary:"आपका संपादकीय मंच पूरी तरह से तैयार है। अब आप अपने समाचार लेख और यूट्यूब वीडियो प्रकाशित कर सकते हैं।", body:"अपना सुरक्षित डैशबोर्ड एक्सेस करने के लिए शीर्ष मेनू में '⚙ ADMIN' बटन पर क्लिक करें।\n\nवहां से, आप चित्र अपलोड कर सकते हैं, हेडलाइंस लिख सकते हैं, और सीधे अपने पहले पृष्ठ पर समाचार प्रकाशित कर सकते हैं।", author:"Admin", date: new Date().toLocaleDateString(), rt: 2, img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80", feat:true};
 
 function Rule(){return <div className="jrule"/>;}
-function SH({title}){return <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"12px"}}><div className="jsect">{title}</div></div>;}
+function SH({title}){return <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"14px"}}><div className="jsect">{title}</div></div>;}
 
 function ACard({a, open, size}){
   const isH = size === "h";
   if(isH) return (
     <div className="jcard-flat" onClick={()=>open(a)}>
-      <div className="jzoom" style={{width:"120px",height:"85px",flexShrink:0,borderRadius:"6px"}}><img src={a.img} alt={a.title} style={{borderRadius:"6px"}}/></div>
+      <div className="jzoom" style={{width:"130px",height:"90px",flexShrink:0,borderRadius:"6px"}}><img src={a.img} alt={a.title} style={{borderRadius:"6px"}}/></div>
       <div>
         <span className="jbadge-flat" style={{background:cc(a.cat)}}>{a.cat}</span>
-        <h4 style={{fontSize:"17px",fontWeight:900,lineHeight:1.35,color:"#111",marginBottom:"6px"}}>{a.title}</h4>
-        <div style={{fontSize:"13px",color:"#666",fontWeight:600}}><Clock size={11}/> {a.date}</div>
+        <h4 style={{fontSize:"18px",fontWeight:900,lineHeight:1.35,color:"#111",marginBottom:"8px"}}>{a.title}</h4>
+        <div style={{fontSize:"14px",color:"#666",fontWeight:700}}><Clock size={12}/> {a.date}</div>
       </div>
     </div>
   );
   return (
     <div className="jcard" onClick={()=>open(a)}>
-      <div className="jzoom" style={{height:"200px",borderBottom:"1px solid #EEE"}}><img src={a.img} alt={a.title}/></div>
+      <div className="jzoom" style={{height:"210px",borderBottom:"1px solid #EEE"}}><img src={a.img} alt={a.title}/></div>
       <span className="jbadge" style={{background:cc(a.cat)}}>{a.cat}</span>
-      <h3 style={{padding:"0 12px",fontSize:"20px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"8px"}}>{a.title}</h3>
-      {a.summary && <p style={{padding:"0 12px",color:"#444",fontSize:"16px",lineHeight:1.6,marginBottom:"12px",fontWeight:500}}>{a.summary.slice(0,95)}…</p>}
-      <div style={{padding:"0 12px",display:"flex",gap:"10px",color:"#888",fontSize:"13px",fontWeight:600,alignItems:"center"}}><Clock size={12}/><span>{a.rt} {T.mr} पढ़ने का समय</span></div>
+      <h3 style={{padding:"0 14px",fontSize:"21px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"10px"}}>{a.title}</h3>
+      {a.summary && <p style={{padding:"0 14px",color:"#333",fontSize:"17px",lineHeight:1.6,marginBottom:"12px",fontWeight:600}}>{a.summary.slice(0,95)}…</p>}
+      <div style={{padding:"0 14px",display:"flex",gap:"10px",color:"#888",fontSize:"14px",fontWeight:700,alignItems:"center"}}><Clock size={13}/><span>{a.rt} {T.mr} पढ़ने का समय</span></div>
     </div>
   );
 }
@@ -163,43 +163,43 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
   const side = remaining.slice(0,3);
 
   return <div>
-    <section style={{maxWidth:MW,margin:"0 auto",padding:"32px 20px",borderBottom:"1px solid #EBEBEB"}}>
-      <div className="jh2col" style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:"32px"}}>
+    <section style={{maxWidth:MW,margin:"0 auto",padding:"36px 20px",borderBottom:"1px solid #EBEBEB"}}>
+      <div className="jh2col" style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:"36px"}}>
         <div className="jcard" onClick={()=>open(hero)} style={{position:"relative",borderRadius:"8px",overflow:"hidden", border:"none"}}>
-          <div className="jzoom" style={{height:"500px",background:"#000"}}><img src={hero.img} alt={hero.title} style={{opacity:.85}}/></div>
+          <div className="jzoom" style={{height:"520px",background:"#000"}}><img src={hero.img} alt={hero.title} style={{opacity:.85}}/></div>
           <div style={{position:"absolute",bottom:0,left:0,right:0,background:"linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,.6) 60%,transparent)",padding:"36px"}}>
-            <span className="jbadge-flat" style={{background:R,fontSize:"14px",padding:"6px 14px",marginBottom:"14px"}}>{hero.cat}</span>
-            <h1 style={{fontSize:"34px",fontWeight:900,color:"#fff",lineHeight:1.3,marginBottom:"12px",letterSpacing:"-0.02em"}}>{hero.title}</h1>
-            <p style={{color:"rgba(255,255,255,.9)",fontSize:"18px",lineHeight:1.6,marginBottom:"14px",fontWeight:500}}>{(hero.summary||"").slice(0,140)}…</p>
-            <div style={{display:"flex",gap:"16px",fontSize:"14px",fontWeight:700}}><span style={{color:"#FF9999"}}>{hero.author}</span><span style={{color:"rgba(255,255,255,.7)"}}><Clock size={12}/> {hero.date}</span></div>
+            <span className="jbadge-flat" style={{background:R,fontSize:"15px",padding:"6px 14px",marginBottom:"16px"}}>{hero.cat}</span>
+            <h1 style={{fontSize:"38px",fontWeight:900,color:"#fff",lineHeight:1.3,marginBottom:"14px",letterSpacing:"-0.02em"}}>{hero.title}</h1>
+            <p style={{color:"rgba(255,255,255,.9)",fontSize:"20px",lineHeight:1.6,marginBottom:"16px",fontWeight:600}}>{(hero.summary||"").slice(0,140)}…</p>
+            <div style={{display:"flex",gap:"18px",fontSize:"15px",fontWeight:800}}><span style={{color:"#FF9999"}}>{hero.author}</span><span style={{color:"rgba(255,255,255,.7)"}}><Clock size={14}/> {hero.date}</span></div>
           </div>
         </div>
         <div>
           <SH title={T.pk}/>
           <div style={{marginBottom:"24px"}}><Rule/></div>
-          {picks.length > 0 ? picks.map(a=><ACard key={a.id} a={a} open={open} size="h"/>) : <div style={{color:"#888",fontWeight:600}}>संपादक की पसंद जल्द ही अपडेट की जाएगी।</div>}
+          {picks.length > 0 ? picks.map(a=><ACard key={a.id} a={a} open={open} size="h"/>) : <div style={{color:"#888",fontWeight:700,fontSize:"16px"}}>संपादक की पसंद जल्द ही अपडेट की जाएगी।</div>}
         </div>
       </div>
     </section>
 
-    {lat.length > 0 && <section style={{maxWidth:MW,margin:"0 auto",padding:"40px 20px",borderBottom:"1px solid #EBEBEB"}}>
+    {lat.length > 0 && <section style={{maxWidth:MW,margin:"0 auto",padding:"48px 20px",borderBottom:"1px solid #EBEBEB"}}>
       <SH title={T.lat}/><Rule/>
       <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"24px"}}>{lat.map(a=><ACard key={a.id} a={a} open={open}/>)}</div>
     </section>}
 
-    {vids.length > 0 && <section style={{background:N,padding:"48px 0"}}>
+    {vids.length > 0 && <section style={{background:N,padding:"56px 0"}}>
       <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"12px"}}><div className="jsect" style={{color:"#fff"}}>{T.vd}</div></div>
-        <div style={{height:"4px",background:"linear-gradient(to right,#CC0000,rgba(204,0,0,.2),transparent)",margin:"10px 0 28px"}}/>
-        <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"24px"}}>
+        <div style={{height:"4px",background:"linear-gradient(to right,#CC0000,rgba(204,0,0,.2),transparent)",margin:"10px 0 32px"}}/>
+        <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"28px"}}>
           {vids.map((v,i)=>(
             <a key={i} href={`https://www.youtube.com/watch?v=${v.vid}`} target="_blank" style={{textDecoration:"none"}} className="jcard">
-              <div style={{height:"220px",position:"relative",background:"#000"}}>
+              <div style={{height:"240px",position:"relative",background:"#000"}}>
                 <img src={`https://img.youtube.com/vi/${v.vid}/hqdefault.jpg`} alt={v.title} style={{width:"100%",height:"100%",objectFit:"cover",opacity:.8}}/>
-                <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{width:"56px",height:"56px",background:R,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 12px rgba(0,0,0,.3)"}}><Play size={24} color="#fff" style={{marginLeft:"4px"}}/></div></div>
+                <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{width:"64px",height:"64px",background:R,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 16px rgba(0,0,0,.4)"}}><Play size={28} color="#fff" style={{marginLeft:"6px"}}/></div></div>
               </div>
-              <div style={{padding:"16px",background:"#fff"}}>
-                <h3 style={{fontSize:"18px",fontWeight:800,lineHeight:1.4,color:"#111"}}>{v.title}</h3>
+              <div style={{padding:"20px",background:"#fff"}}>
+                <h3 style={{fontSize:"20px",fontWeight:900,lineHeight:1.4,color:"#111"}}>{v.title}</h3>
               </div>
             </a>
           ))}
@@ -207,16 +207,16 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
       </div>
     </section>}
 
-    <section style={{background:"#F9FAFB",padding:"48px 0",borderBottom:"1px solid #EBEBEB"}}>
+    <section style={{background:"#F9FAFB",padding:"56px 0",borderBottom:"1px solid #EBEBEB"}}>
       <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
-        <div className="j2col" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"56px"}}>
-          <div><SH title={T.op}/><Rule/>{remaining.filter(a=>a.cat==="Opinion"||a.cat==="विचार").slice(0,3).map(a=><div key={a.id} onClick={()=>open(a)} style={{borderLeft:"5px solid #6b3a9a",paddingLeft:"18px",cursor:"pointer",marginBottom:"24px",paddingBottom:"24px",borderBottom:"1px solid #E8E8E8", transition:"border-color .2s"}} onMouseOver={e=>e.currentTarget.style.borderLeftColor=R} onMouseOut={e=>e.currentTarget.style.borderLeftColor="#6b3a9a"}><div style={{display:"flex",gap:"16px"}}><div style={{width:"52px",height:"52px",background:"#6b3a9a",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><User size={22} color="#fff"/></div><div><div style={{fontWeight:800,fontSize:"15px",color:"#444",marginBottom:"4px"}}>{a.author}</div><h4 style={{fontSize:"20px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"8px"}}>{a.title}</h4><p style={{color:"#333",fontSize:"16px",lineHeight:1.6,marginBottom:0}}>{(a.summary||"").slice(0,120)}…</p></div></div></div>)}</div>
+        <div className="j2col" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"64px"}}>
+          <div><SH title={T.op}/><Rule/>{remaining.filter(a=>a.cat==="Opinion"||a.cat==="विचार").slice(0,3).map(a=><div key={a.id} onClick={()=>open(a)} style={{borderLeft:"6px solid #6b3a9a",paddingLeft:"20px",cursor:"pointer",marginBottom:"28px",paddingBottom:"28px",borderBottom:"1px solid #E8E8E8", transition:"border-color .2s"}} onMouseOver={e=>e.currentTarget.style.borderLeftColor=R} onMouseOut={e=>e.currentTarget.style.borderLeftColor="#6b3a9a"}><div style={{display:"flex",gap:"18px"}}><div style={{width:"56px",height:"56px",background:"#6b3a9a",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><User size={24} color="#fff"/></div><div><div style={{fontWeight:900,fontSize:"17px",color:"#444",marginBottom:"6px"}}>{a.author}</div><h4 style={{fontSize:"22px",fontWeight:900,lineHeight:1.35,color:"#000",marginBottom:"10px"}}>{a.title}</h4><p style={{color:"#222",fontSize:"17px",lineHeight:1.6,marginBottom:0,fontWeight:600}}>{(a.summary||"").slice(0,120)}…</p></div></div></div>)}</div>
           
-          <div style={{background:"#fff",padding:"36px",borderRadius:"12px",border:"1px solid #E5E7EB", height:"fit-content", boxShadow:"0 4px 20px rgba(0,0,0,.03)"}}>
-             <div style={{fontWeight:900,fontSize:"22px",color:N,marginBottom:"14px",textTransform:"uppercase",letterSpacing:"1px"}}>{T.nl}</div>
-             <p style={{color:"#444",fontSize:"17px",lineHeight:1.6,marginBottom:"24px",fontWeight:500}}>{T.nls}</p>
-             {subbed?<div style={{color:"#1a7a4a",fontSize:"18px",fontWeight:800,padding:"18px",background:"rgba(26,122,74,.1)",borderRadius:"6px",textAlign:"center"}}>✓ सफलतापूर्वक सब्सक्राइब कर लिया गया!</div>
-             :<div><input className="ainp" placeholder={T.emph} value={email} onChange={e=>setEmail(e.target.value)} style={{marginBottom:"16px"}}/><button className="jbtn" onClick={()=>email.includes("@")&&setSub(true)} style={{width:"100%",padding:"14px",fontSize:"18px"}}>{T.subt}</button></div>}
+          <div style={{background:"#fff",padding:"40px",borderRadius:"12px",border:"1px solid #E5E7EB", height:"fit-content", boxShadow:"0 4px 24px rgba(0,0,0,.04)"}}>
+             <div style={{fontWeight:900,fontSize:"24px",color:N,marginBottom:"16px",textTransform:"uppercase",letterSpacing:"1px"}}>{T.nl}</div>
+             <p style={{color:"#333",fontSize:"18px",lineHeight:1.6,marginBottom:"28px",fontWeight:600}}>{T.nls}</p>
+             {subbed?<div style={{color:"#1a7a4a",fontSize:"20px",fontWeight:900,padding:"20px",background:"rgba(26,122,74,.1)",borderRadius:"6px",textAlign:"center"}}>✓ सफलतापूर्वक सब्सक्राइब कर लिया गया!</div>
+             :<div><input className="ainp" placeholder={T.emph} value={email} onChange={e=>setEmail(e.target.value)} style={{marginBottom:"18px"}}/><button className="jbtn" onClick={()=>email.includes("@")&&setSub(true)} style={{width:"100%",padding:"16px",fontSize:"20px"}}>{T.subt}</button></div>}
           </div>
         </div>
       </div>
@@ -226,59 +226,59 @@ function HomePage({arts, vids, open, email, setEmail, subbed, setSub}){
 
 function ArticlePage({a, goHome, related, open}){
   return <div>
-    <div style={{maxWidth:"900px",margin:"0 auto",padding:"40px 20px"}}>
-      <div style={{fontSize:"15px",fontWeight:700,color:"#888",marginBottom:"24px",display:"flex",gap:"10px",alignItems:"center"}}><span onClick={goHome} style={{color:R,cursor:"pointer"}}>होम</span><ChevronRight size={14} color="#ccc"/><span>{a.cat}</span></div>
+    <div style={{maxWidth:"900px",margin:"0 auto",padding:"48px 20px"}}>
+      <div style={{fontSize:"16px",fontWeight:800,color:"#888",marginBottom:"28px",display:"flex",gap:"10px",alignItems:"center"}}><span onClick={goHome} style={{color:R,cursor:"pointer"}}>होम</span><ChevronRight size={16} color="#ccc"/><span>{a.cat}</span></div>
       <article>
-        <span className="jbadge-flat" style={{background:cc(a.cat),fontSize:"14px",padding:"6px 14px",marginBottom:"16px"}}>{a.cat}</span>
-        <h1 style={{fontSize:"42px",fontWeight:900,lineHeight:1.25,color:"#000",marginBottom:"20px",letterSpacing:"-0.02em"}}>{a.title}</h1>
-        <div style={{fontSize:"22px",fontWeight:600,color:"#333",lineHeight:1.6,marginBottom:"28px",borderLeft:"4px solid "+R,paddingLeft:"20px"}}>{a.summary}</div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"16px 0",borderTop:"2px solid #E8E8E8",borderBottom:"2px solid #E8E8E8",marginBottom:"32px"}}>
-          <div style={{display:"flex",alignItems:"center",gap:"14px"}}><div style={{width:"48px",height:"48px",background:N,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center"}}><User size={20} color="#fff"/></div><div><div style={{fontWeight:800,fontSize:"17px",color:"#111"}}>{a.author}</div><div style={{fontSize:"14px",color:"#777",fontWeight:600,marginTop:"2px"}}><Clock size={12}/> {a.date} · {a.rt} {T.mr} पढ़ने का समय</div></div></div>
+        <span className="jbadge-flat" style={{background:cc(a.cat),fontSize:"15px",padding:"8px 16px",marginBottom:"20px"}}>{a.cat}</span>
+        <h1 style={{fontSize:"46px",fontWeight:900,lineHeight:1.25,color:"#000",marginBottom:"24px",letterSpacing:"-0.02em"}}>{a.title}</h1>
+        <div style={{fontSize:"24px",fontWeight:700,color:"#222",lineHeight:1.6,marginBottom:"32px",borderLeft:"5px solid "+R,paddingLeft:"24px"}}>{a.summary}</div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"20px 0",borderTop:"2px solid #E8E8E8",borderBottom:"2px solid #E8E8E8",marginBottom:"36px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:"16px"}}><div style={{width:"52px",height:"52px",background:N,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center"}}><User size={24} color="#fff"/></div><div><div style={{fontWeight:900,fontSize:"19px",color:"#111"}}>{a.author}</div><div style={{fontSize:"15px",color:"#666",fontWeight:700,marginTop:"4px"}}><Clock size={13}/> {a.date} · {a.rt} {T.mr} पढ़ने का समय</div></div></div>
         </div>
-        {a.img && <div style={{marginBottom:"36px",borderRadius:"8px",overflow:"hidden",boxShadow:"0 4px 12px rgba(0,0,0,.05)"}}><img src={a.img} alt={a.title} style={{width:"100%",height:"auto",maxHeight:"550px",objectFit:"cover",display:"block"}}/></div>}
-        <div style={{fontSize:"20px",lineHeight:1.9,color:"#111",fontWeight:500}}>{(a.body||a.summary||"").split("\n\n").map((p,i)=><p key={i} style={{marginBottom:"28px"}}>{p}</p>)}</div>
+        {a.img && <div style={{marginBottom:"40px",borderRadius:"8px",overflow:"hidden",boxShadow:"0 4px 16px rgba(0,0,0,.06)"}}><img src={a.img} alt={a.title} style={{width:"100%",height:"auto",maxHeight:"600px",objectFit:"cover",display:"block"}}/></div>}
+        <div style={{fontSize:"22px",lineHeight:1.9,color:"#111",fontWeight:500}}>{(a.body||a.summary||"").split("\n\n").map((p,i)=><p key={i} style={{marginBottom:"32px"}}>{p}</p>)}</div>
       </article>
     </div>
     
-    <div style={{background:"#F9FAFB",padding:"48px 0",borderTop:"1px solid #EBEBEB"}}>
+    <div style={{background:"#F9FAFB",padding:"56px 0",borderTop:"1px solid #EBEBEB"}}>
       <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
         <SH title={T.lat}/><Rule/>
-        <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"24px"}}>{related.length > 0 ? related.map(r=><ACard key={r.id} a={r} open={open}/>) : <div style={{color:"#888", fontWeight:600, fontSize:"16px"}}>अन्य लेख नहीं मिले।</div>}</div>
+        <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"24px"}}>{related.length > 0 ? related.map(r=><ACard key={r.id} a={r} open={open}/>) : <div style={{color:"#888", fontWeight:700, fontSize:"18px"}}>अन्य लेख नहीं मिले।</div>}</div>
       </div>
     </div>
   </div>;
 }
 
 function Footer({goHome, sLinks}){
-  return <footer style={{background:DN,paddingTop:"56px"}}>
+  return <footer style={{background:DN,paddingTop:"64px"}}>
     <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
-      <div className="j4col" style={{display:"grid",gridTemplateColumns:"2fr 1fr 2fr",gap:"40px",marginBottom:"48px"}}>
+      <div className="j4col" style={{display:"grid",gridTemplateColumns:"2fr 1fr 2fr",gap:"48px",marginBottom:"56px"}}>
         <div>
-          <div style={{display:"flex",alignItems:"center",gap:"14px",marginBottom:"20px",cursor:"pointer"}} onClick={goHome}>
-            <div style={{width:"56px",height:"56px",background:R,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"30px",lineHeight:1}}>JN</span></div>
+          <div style={{display:"flex",alignItems:"center",gap:"16px",marginBottom:"24px",cursor:"pointer"}} onClick={goHome}>
+            <div style={{width:"64px",height:"64px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"36px",lineHeight:1}}>JN</span></div>
             <div>
-              <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px",letterSpacing:"1px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
+              <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"32px",letterSpacing:"1.5px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
             </div>
           </div>
-          <p style={{fontSize:"16px",lineHeight:1.7,color:"#A0AEC0",marginBottom:"24px",fontWeight:500}}>यह मंच मुख्य रूप से झारखंड और राष्ट्रीय स्तर की घटनाओं व समाचारों के लिए बनाया गया है। हमारा उद्देश्य सत्य और तथ्य पर आधारित स्वतंत्र पत्रकारिता को बढ़ावा देना है।</p>
-          <div style={{display:"flex",gap:"14px"}}>{sLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{width:"38px",height:"38px",background:"rgba(255,255,255,.08)",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",textDecoration:"none",transition:"background .2s"}} onMouseOver={e=>e.currentTarget.style.background=R} onMouseOut={e=>e.currentTarget.style.background="rgba(255,255,255,.08)"}><Icon size={16}/></a>)}</div>
+          <p style={{fontSize:"18px",lineHeight:1.7,color:"#A0AEC0",marginBottom:"28px",fontWeight:600}}>यह मंच मुख्य रूप से झारखंड और राष्ट्रीय स्तर की घटनाओं व समाचारों के लिए बनाया गया है। हमारा उद्देश्य सत्य और तथ्य पर आधारित स्वतंत्र पत्रकारिता को बढ़ावा देना है।</p>
+          <div style={{display:"flex",gap:"16px"}}>{sLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{width:"44px",height:"44px",background:"rgba(255,255,255,.08)",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",textDecoration:"none",transition:"background .2s"}} onMouseOver={e=>e.currentTarget.style.background=R} onMouseOut={e=>e.currentTarget.style.background="rgba(255,255,255,.08)"}><Icon size={18}/></a>)}</div>
         </div>
         
         <div>
-          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:800,fontSize:"18px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"20px",paddingBottom:"10px",borderBottom:"3px solid "+R}}>महत्वपूर्ण लिंक</div>
+          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"20px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"24px",paddingBottom:"12px",borderBottom:"4px solid "+R}}>महत्वपूर्ण लिंक</div>
           {T.nav.slice(0,6).map((l,i)=><span key={i} className="jflink" onClick={goHome}>{l}</span>)}
         </div>
         
         <div>
-          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:800,fontSize:"18px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"20px",paddingBottom:"10px",borderBottom:"3px solid "+R}}>संपर्क करें</div>
-          <div style={{fontSize:"15px",color:"#A0AEC0",marginBottom:"6px",fontWeight:600}}>सुझाव / शिकायत / समाचार भेजने के लिए:</div>
-          <div style={{fontSize:"18px",fontWeight:700,color:"#fff",display:"flex",alignItems:"center",gap:"10px",marginBottom:"20px"}}><Mail size={16}/> sudhakarjhanews@gmail.com</div>
-          <div style={{fontSize:"15px",color:"#A0AEC0",marginBottom:"6px",fontWeight:600}}>विज्ञापन के लिए संपर्क करें:</div>
-          <div style={{fontSize:"18px",fontWeight:700,color:"#fff",display:"flex",alignItems:"center",gap:"10px",marginBottom:"24px"}}><Mail size={16}/> sudhakarjhanews@gmail.com</div>
+          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"20px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"24px",paddingBottom:"12px",borderBottom:"4px solid "+R}}>संपर्क करें</div>
+          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>सुझाव / शिकायत / समाचार भेजने के लिए:</div>
+          <div style={{fontSize:"20px",fontWeight:800,color:"#fff",display:"flex",alignItems:"center",gap:"12px",marginBottom:"24px"}}><Mail size={18}/> sudhakarjhanews@gmail.com</div>
+          <div style={{fontSize:"17px",color:"#A0AEC0",marginBottom:"8px",fontWeight:700}}>विज्ञापन के लिए संपर्क करें:</div>
+          <div style={{fontSize:"20px",fontWeight:800,color:"#fff",display:"flex",alignItems:"center",gap:"12px",marginBottom:"24px"}}><Mail size={18}/> sudhakarjhanews@gmail.com</div>
         </div>
       </div>
-      <div style={{borderTop:"1px solid rgba(255,255,255,.08)",padding:"24px 0",textAlign:"center"}}>
-        <span style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"16px",fontWeight:600,color:"#718096",letterSpacing:"1px"}}>© 2026 जनार्दन न्यूज़. सर्वाधिकार सुरक्षित।</span>
+      <div style={{borderTop:"1px solid rgba(255,255,255,.08)",padding:"28px 0",textAlign:"center"}}>
+        <span style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"18px",fontWeight:800,color:"#718096",letterSpacing:"1px"}}>© 2026 जनार्दन न्यूज़. सर्वाधिकार सुरक्षित।</span>
       </div>
     </div>
   </footer>;
@@ -334,27 +334,27 @@ function JanardanNews(){
   const open=a=>{setSel(a);setPage("article");setMenuOpen(false);window.scrollTo(0,0);};
   const goHome=()=>{setPage("home");setSel(null);};
 
-  if(loading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontFamily:"'Rajdhani',sans-serif",fontSize:"24px",fontWeight:800,color:N}}>Janardan Database से जुड़ रहा है…</div>;
+  if(loading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontFamily:"'Rajdhani',sans-serif",fontSize:"28px",fontWeight:900,color:N}}>Janardan Database से जुड़ रहा है…</div>;
 
   return <div style={{background:"#F9FAFB",color:"#000",minHeight:"100vh"}}>
-    {menuOpen&&<div className="jmenu"><div style={{background:DN,padding:"20px 24px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"3px solid "+R}}><div style={{display:"flex",alignItems:"center",gap:"12px"}}><div style={{width:"44px",height:"44px",background:R,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"24px"}}>JN</span></div><span style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"24px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></span></div><button onClick={()=>setMenuOpen(false)} style={{background:"none",border:"none",cursor:"pointer"}}><X size={32} color="#fff"/></button></div>{T.nav.map((item,i)=><span key={i} className="jmi" onClick={()=>{setMenuOpen(false);goHome();}}>{item}</span>)}<a href="/admin/" className="jmi" style={{color:R}}>⚙ Admin Login</a></div>}
+    {menuOpen&&<div className="jmenu"><div style={{background:DN,padding:"24px 28px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"4px solid "+R}}><div style={{display:"flex",alignItems:"center",gap:"14px"}}><div style={{width:"52px",height:"52px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px"}}>JN</span></div><span style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"28px",color:"#fff"}}>{T.n1} <span style={{color:R}}>{T.n2}</span></span></div><button onClick={()=>setMenuOpen(false)} style={{background:"none",border:"none",cursor:"pointer"}}><X size={36} color="#fff"/></button></div>{T.nav.map((item,i)=><span key={i} className="jmi" onClick={()=>{setMenuOpen(false);goHome();}}>{item}</span>)}<a href="/admin/" className="jmi" style={{color:R}}>⚙ Admin Login</a></div>}
     
-    <div style={{background:DN,padding:"10px 0"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="jtm" style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"15px",fontWeight:800,color:"#fff",letterSpacing:"1px"}}>{istTime}</span><div style={{display:"flex",gap:"18px"}}>{socialLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{color:"#fff", transition:"opacity .2s"}} onMouseOver={e=>e.currentTarget.style.opacity=.7} onMouseOut={e=>e.currentTarget.style.opacity=1}><Icon size={16}/></a>)}</div></div></div>
+    <div style={{background:DN,padding:"12px 0"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="jtm" style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"17px",fontWeight:900,color:"#fff",letterSpacing:"1px"}}>{istTime}</span><div style={{display:"flex",gap:"20px"}}>{socialLinks.map(({Icon, url},i)=><a key={i} href={url} target="_blank" style={{color:"#fff", transition:"opacity .2s"}} onMouseOver={e=>e.currentTarget.style.opacity=.7} onMouseOut={e=>e.currentTarget.style.opacity=1}><Icon size={18}/></a>)}</div></div></div>
     
-    <header style={{background:"#fff",padding:"20px 0",boxShadow:"0 4px 12px rgba(0,0,0,.03)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
-      <div onClick={goHome} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"18px"}}>
-        <div style={{width:"64px",height:"64px",background:R,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 10px rgba(204,0,0,.3)"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"36px",lineHeight:1}}>JN</span></div>
+    <header style={{background:"#fff",padding:"24px 0",boxShadow:"0 4px 16px rgba(0,0,0,.04)",position:"relative",zIndex:10}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"16px"}}>
+      <div onClick={goHome} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"20px"}}>
+        <div style={{width:"72px",height:"72px",background:R,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 12px rgba(204,0,0,.3)"}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"42px",lineHeight:1}}>JN</span></div>
         <div>
-          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"34px",letterSpacing:"1.5px",color:N,lineHeight:1.1}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
-          <div style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"14px",fontWeight:800,letterSpacing:"1.5px",color:"#fff",background:"#CC0000",display:"inline-block",padding:"3px 10px",borderRadius:"3px",marginTop:"8px"}}>{T.tag}</div>
+          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"40px",letterSpacing:"1.5px",color:N,lineHeight:1.1}}>{T.n1} <span style={{color:R}}>{T.n2}</span></div>
+          <div style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"16px",fontWeight:900,letterSpacing:"1.5px",color:"#fff",background:"#CC0000",display:"inline-block",padding:"4px 12px",borderRadius:"4px",marginTop:"8px"}}>{T.tag}</div>
         </div>
       </div>
-      <div style={{display:"flex",alignItems:"center",gap:"16px"}}><button onClick={()=>setMenuOpen(true)} style={{background:"none",border:"none",cursor:"pointer",padding:"6px",background:"#F5F7FA",borderRadius:"6px"}}><Menu size={32} color={N}/></button></div>
+      <div style={{display:"flex",alignItems:"center",gap:"20px"}}><button onClick={()=>setMenuOpen(true)} style={{background:"none",border:"none",cursor:"pointer",padding:"8px",background:"#F5F7FA",borderRadius:"8px"}}><Menu size={36} color={N}/></button></div>
     </div></header>
     
-    <div style={{background:R,height:"44px",display:"flex",alignItems:"center",borderBottom:"3px solid #990000"}}><div style={{background:"#990000",padding:"0 20px",height:"100%",display:"flex",alignItems:"center",flexShrink:0,boxShadow:"4px 0 10px rgba(0,0,0,.2)",zIndex:2}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"15px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {T.brk}</span></div><div className="jticker-container"><div className="jticker">{tickerText}</div></div></div>
+    <div style={{background:R,height:"52px",display:"flex",alignItems:"center",borderBottom:"4px solid #990000"}}><div style={{background:"#990000",padding:"0 24px",height:"100%",display:"flex",alignItems:"center",flexShrink:0,boxShadow:"4px 0 12px rgba(0,0,0,.2)",zIndex:2}}><span style={{color:"#fff",fontFamily:"'Rajdhani',sans-serif",fontWeight:900,fontSize:"17px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {T.brk}</span></div><div className="jticker-container"><div className="jticker">{tickerText}</div></div></div>
     
-    <nav style={{background:N,borderBottom:"4px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex",justifyContent:"space-between"}}><div style={{display:"flex"}}>{T.nav.map((item,i)=><span key={i} className={`jnl${i===0&&page==="home"?" active":""}`} onClick={goHome}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
+    <nav style={{background:N,borderBottom:"5px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex",justifyContent:"space-between"}}><div style={{display:"flex"}}>{T.nav.map((item,i)=><span key={i} className={`jnl${i===0&&page==="home"?" active":""}`} onClick={goHome}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
     
     <main>
       {page==="home"&&<HomePage arts={dbArts} vids={dbVids} open={open} email={email} setEmail={setEmail} subbed={subbed} setSub={setSubbed}/>}
