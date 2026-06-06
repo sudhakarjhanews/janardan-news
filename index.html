@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Janardan News — Truth. Facts. People's Voice.</title>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Rajdhani:wght@500;600;700&family=Source+Sans+3:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;700;900&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+@keyframes tick{0%{transform:translateX(100vw)}100%{transform:translateX(-120%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes fadein{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* High Contrast & Readability Improvements */
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: #FCFCFC; 
+  color: #000000; 
+  -webkit-font-smoothing: antialiased;
+}
+p {
+  font-size: 17px; 
+  line-height: 1.8; 
+  color: #1A1A1A; 
+  margin-bottom: 22px;
+}
+h1, h2, h3, h4 {
+  color: #000000;
+  letter-spacing: -0.02em; 
+}
+
+.jticker{display:inline-block;white-space:nowrap;animation:tick 62s linear infinite;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:13px;color:#fff;}
+.jcard{cursor:pointer;transition:transform .22s,box-shadow .22s;}
+.jcard:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.1);}
+.jzoom{overflow:hidden;}.jzoom img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.jzoom:hover img{transform:scale(1.06);}
+.jnl{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:14px;letter-spacing:.4px;text-transform:uppercase;color:rgba(255,255,255,.88);padding:12px 14px;cursor:pointer;white-space:nowrap;display:inline-block;transition:background .15s;border-bottom:3px solid transparent; text-decoration: none;}
+.jnl:hover{color:#fff;background:rgba(255,255,255,.1);}
+.jnl.active{color:#fff;border-bottom-color:#CC0000;}
+.jsect{font-family:'Rajdhani',sans-serif;font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:#0F2557;border-left:4px solid #CC0000;padding-left:11px;}
+.jrule{height:3px;background:linear-gradient(to right,#CC0000,rgba(204,0,0,.2),transparent);margin:8px 0 20px;}
+.jbadge{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:7px;}
+.jbtn{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;background:#CC0000;color:#fff;border:none;padding:9px 20px;border-radius:3px;cursor:pointer;}
+.jbtn:hover{background:#990000;}
+.jbtn-o{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;background:transparent;color:#CC0000;border:1.5px solid #CC0000;padding:5px 13px;border-radius:3px;cursor:pointer;}
+.jbtn-o:hover{background:#CC0000;color:#fff;}
+.jbtn-g{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.3);padding:5px 13px;border-radius:3px;cursor:pointer;}
+.jbtn-g:hover{background:rgba(255,255,255,.12);color:#fff;}
+.jtag{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:12px;color:#0F2557;border:1px solid #ddd;padding:4px 10px;border-radius:20px;cursor:pointer;display:inline-block;background:#fff;}
+.jtag:hover{background:#0F2557;color:#fff;}
+.jflink{font-family:'Rajdhani',sans-serif;font-size:13px;color:#556;display:block;margin-bottom:9px;cursor:pointer; text-decoration: none;}
+.jflink:hover{color:#CC0000; text-decoration: underline;}
+.jprog{position:fixed;top:0;left:0;height:3px;background:#CC0000;transform-origin:left;animation:prog 4s ease-out forwards;z-index:9999;width:100%;}
+.jmenu{position:fixed;inset:0;background:#0F2557;z-index:1000;overflow-y:auto;}
+.jmi{padding:13px 24px;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.88);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;cursor:pointer; text-decoration: none; display: block;}
+.jmi:hover{background:rgba(255,255,255,.07);}
+.jsrch{background:#F5F5F5;border:1px solid #E0E0E0;color:#111;padding:8px 8px 8px 34px;border-radius:3px;font-size:13px;outline:none;width:190px;font-family:inherit;}
+.jsrch::placeholder{color:#bbb;}
+.jnli{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.22);color:#fff;padding:12px 16px;border-radius:3px;font-size:14px;outline:none;flex:1;min-width:0;font-family:inherit;}
+.jnli::placeholder{color:rgba(255,255,255,.4);}
+.jvc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .22s;}
+.jvc:hover{transform:translateY(-3px);}
+.jop{border-left:4px solid #6b3a9a;padding-left:14px;cursor:pointer;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #F0F0F0;}
+.jop:hover{border-left-color:#CC0000;}
+.ainp{width:100%;padding:9px 11px;border:1.5px solid #E0E0E0;border-radius:4px;font-size:13.5px;font-family:inherit;outline:none;}
+.ainp:focus{border-color:#0F2557;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-thumb{background:#CC0000;border-radius:3px;}
+@media(max-width:860px){.jh2col{grid-template-columns:1fr!important;}.j2col{grid-template-columns:1fr!important;}.j4col{grid-template-columns:1fr 1fr!important;}.jfg{grid-template-columns:1fr 1fr!important;}.jtm{display:none!important;}}
+@media(max-width:480px){.j4col{grid-template-columns:1fr!important;}.jfg{grid-template-columns:1fr!important;}.jtmx{display:none!important;}}
+</style>
+</head>
+<body>
+<div id="root"><div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Rajdhani,sans-serif;font-size:18px;color:#0F2557;">Loading Janardan News…</div></div>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
+<script type="text/babel">
+const {useState, useEffect}=React;
+const R="#CC0000", N="#0F2557", DN="#0a1942", MW="1240px", PA="0 20px";
+
+const CC={National:R,"राष्ट्रीय":R,Technology:"#1a5a8a","तकनीक":"#1a5a8a",Agriculture:"#7a5a1a","कृषि":"#7a5a1a",Politics:"#8B0000","राजनीति":"#8B0000",Sports:"#1a7a4a","खेल":"#1a7a4a",Health:"#c43b3b","स्वास्थ्य":"#c43b3b",Education:"#005b96","शिक्षा":"#005b96",Opinion:"#6b3a9a","विचार":"#6b3a9a",Entertainment:"#ff8c00","मनोरंजन":"#ff8c00"};
+const cc=c=>CC[c]||R;
+
+const Svg=({size=16,color="currentColor",fill="none",sw=2,style={},children})=><svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" style={{display:"inline-block",verticalAlign:"middle",flexShrink:0,...style}}>{children}</svg>;
+const Search=({size,color,style})=><Svg size={size} color={color} style={style}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></Svg>;
+const Menu=({size,color})=><Svg size={size} color={color}><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></Svg>;
+const X=({size,color})=><Svg size={size} color={color}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></Svg>;
+const Play=({size,color="#fff",style})=><Svg size={size} fill={color} color={color} style={style}><polygon points="5 3 19 12 5 21 5 3"/></Svg>;
+const Globe=({size,color})=><Svg size={size} color={color}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Svg>;
+const Facebook=({size,color})=><Svg size={size} color={color}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></Svg>;
+const Twitter=({size,color})=><Svg size={size} color={color}><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></Svg>;
+const Instagram=({size,color})=><Svg size={size} color={color}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></Svg>;
+const Youtube=({size,color})=><Svg size={size} color={color}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></Svg>;
+const Mail=({size,style})=><Svg size={size} style={style}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></Svg>;
+const Clock=({size})=><Svg size={size}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></Svg>;
+const Eye=({size,style})=><Svg size={size} style={style}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></Svg>;
+const ChevronRight=({size,color})=><Svg size={size} color={color}><polyline points="9 18 15 12 9 6"/></Svg>;
+const User=({size,color})=><Svg size={size} color={color}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></Svg>;
+
+const T={
+en:{n1:"JANARDAN",n2:"NEWS",tag:"Truth. Facts. People's Voice.",brk:"BREAKING",tick:"Stay tuned for the latest news updates from India and around the globe.",src:"Search news…",lng:"हिन्दी",lat:"Latest News",tr:"Trending Now",vd:"Featured Videos",pk:"Editor's Choice",op:"Opinion & Editorial",nl:"Stay Ahead of the News",nls:"Get India's most trusted journalism in your inbox every morning.",emph:"Your email address",subt:"Subscribe Free",mr:"min read",vws:"views",tags:["#Democracy","#CricketIndia","#ISRO","#HealthPolicy","#Education2026"],nav:["Home","National","Politics","Technology","Education","Agriculture","Health","Sports","Opinion","Entertainment"]},
+hi:{n1:"जनार्दन",n2:"न्यूज़",tag:"सत्य। तथ्य। जन की आवाज़।",brk:"ब्रेकिंग",tick:"भारत और दुनिया भर के ताज़ा समाचार अपडेट के लिए बने रहें।",src:"समाचार खोजें…",lng:"English",lat:"ताज़ा खबरें",tr:"ट्रेंडिंग",vd:"वीडियो रिपोर्ट",pk:"संपादक की पसंद",op:"विचार और संपादकीय",nl:"खबरों से जुड़े रहें",nls:"हर सुबह भारत की सबसे विश्वसनीय पत्रकारिता आपके इनबॉक्स में।",emph:"आपका ईमेल पता",subt:"मुफ़्त सदस्यता",mr:"मिनट",vws:"व्यूज़",tags:["#लोकतंत्र","#क्रिकेट","#इसरो","#स्वास्थ्य","#शिक्षा2026"],nav:["होम","राष्ट्रीय","राजनीति","तकनीक","शिक्षा","कृषि","स्वास्थ्य","खेल","विचार","मनोरंजन"]}
+};
+
+const DEFAULT_HERO = {en: {id:"welcome", cat:"National", title:"Welcome to Janardan News Dashboard", summary:"Your editorial platform is live. You can now log into your admin portal to start writing, publishing, and managing your news articles seamlessly.", body:"Please click the '⚙ ADMIN' button in the top menu to access your secure dashboard. \n\nFrom there, you can upload images, write headlines, and instantly publish news directly to your front page.", author:"Admin", date: new Date().toLocaleDateString(), rt: 1, views: "100", img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80", feat:true}, hi: {id:"welcome", cat:"राष्ट्रीय", title:"जनार्दन न्यूज़ डैशबोर्ड में आपका स्वागत है", summary:"आपका संपादकीय मंच लाइव है। अब आप अपने समाचार लेख लिखने और प्रकाशित करने के लिए अपने एडमिन पोर्टल में लॉग इन कर सकते हैं।", body:"अपना सुरक्षित डैशबोर्ड एक्सेस करने के लिए शीर्ष मेनू में '⚙ ADMIN' बटन पर क्लिक करें।\n\nवहां से, आप छवियां अपलोड कर सकते हैं, हेडलाइंस लिख सकते हैं, और सीधे अपने पहले पृष्ठ पर समाचार प्रकाशित कर सकते हैं।", author:"Admin", date: new Date().toLocaleDateString(), rt: 1, views: "100", img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80", feat:true}};
+
+function Badge({cat}){return <span className="jbadge" style={{background:cc(cat)}}>{cat}</span>;}
+function Rule(){return <div className="jrule"/>;}
+function SH({title,onAll,dark}){return <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"8px"}}><div className="jsect" style={{color:dark?"#fff":"#0F2557"}}>{title}</div>{onAll&&<button className={dark?"jbtn-g":"jbtn-o"} onClick={onAll}>See All →</button>}</div>;}
+
+function ACard({a,hf,bf,uf,open,size,t}){
+  const isH=size==="h";
+  if(isH)return <div className="jcard" onClick={()=>open(a)} style={{display:"flex",gap:"12px",paddingBottom:"13px",borderBottom:"1px solid #F2F2F2",marginBottom:"13px"}}><div className="jzoom" style={{width:"88px",height:"63px",flexShrink:0,borderRadius:"3px",background:"#eee"}}><img src={a.img} alt={a.title} style={{borderRadius:"3px"}}/></div><div><Badge cat={a.cat}/><h4 style={{fontFamily:hf,fontSize:"14px",fontWeight:700,lineHeight:1.38,color:"#111",marginBottom:"4px"}}>{a.title}</h4><span style={{fontFamily:uf,fontSize:"11px",color:"#bbb"}}>{a.date}</span></div></div>;
+  return <div className="jcard" onClick={()=>open(a)}><div className="jzoom" style={{height:"185px",borderRadius:"4px",background:"#eee",marginBottom:"11px"}}><img src={a.img} alt={a.title} style={{borderRadius:"4px"}}/></div><Badge cat={a.cat}/><h3 style={{fontFamily:hf,fontSize:"16px",fontWeight:700,lineHeight:1.4,color:"#111",marginBottom:"6px"}}>{a.title}</h3>{a.summary&&<p style={{fontFamily:bf,color:"#1A1A1A",fontSize:"14px",lineHeight:1.65,marginBottom:"8px"}}>{a.summary.slice(0,105)}…</p>}<div style={{display:"flex",gap:"10px",color:"#ccc",fontSize:"11px",fontFamily:uf,alignItems:"center"}}><Clock size={10}/><span>{a.rt+" "+t.mr}</span><Eye size={10} style={{marginLeft:"3px"}}/><span>{a.views || '1K'}</span></div></div>;
+}
+
+function HomePage({t,arts,hf,bf,uf,open,email,setEmail,subbed,setSub,lang}){
+  const hero = arts.find(a=>a.feat) || arts[0] || DEFAULT_HERO[lang];
+  const remaining = arts.filter(a => a.id !== hero.id);
+  const lat = remaining.slice(0,4);
+  const picks = remaining.filter(a=>a.pick).slice(0,3);
+  const side = remaining.slice(0,3);
+
+  return <div>
+    <section style={{maxWidth:MW,margin:"0 auto",padding:"24px 20px",borderBottom:"1px solid #EBEBEB"}}>
+      <div className="jh2col" style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:"22px"}}>
+        <div className="jcard" onClick={()=>open(hero)} style={{position:"relative",borderRadius:"5px",overflow:"hidden"}}>
+          <div className="jzoom" style={{height:"450px",background:"#111"}}><img src={hero.img} alt={hero.title} style={{opacity:.82}}/></div>
+          <div style={{position:"absolute",bottom:0,left:0,right:0,background:"linear-gradient(to top,rgba(0,0,0,.93),rgba(0,0,0,.5) 55%,transparent)",padding:"26px"}}>
+            <span className="jbadge" style={{background:R,marginBottom:"10px"}}>{hero.cat}</span>
+            <h1 style={{fontFamily:hf,fontSize:"26px",fontWeight:700,color:"#fff",lineHeight:1.35,marginBottom:"9px"}}>{hero.title}</h1>
+            <p style={{color:"rgba(255,255,255,.9)",fontSize:"15px",lineHeight:1.6,marginBottom:"10px", fontFamily:bf}}>{(hero.summary||"").slice(0,130)}…</p>
+            <div style={{display:"flex",gap:"14px",fontSize:"12px",fontFamily:uf}}><span style={{color:"#FF9999",fontWeight:600}}>{hero.author}</span><span style={{color:"rgba(255,255,255,.6)"}}>{hero.date}</span></div>
+          </div>
+        </div>
+        <div>{side.map(a=><div key={a.id} className="jcard" onClick={()=>open(a)} style={{display:"flex",gap:"11px",borderBottom:"1px solid #F0F0F0",paddingBottom:"13px",marginBottom:"13px"}}><div className="jzoom" style={{width:"100px",height:"73px",flexShrink:0,borderRadius:"3px",background:"#eee"}}><img src={a.img} alt={a.title} style={{borderRadius:"3px"}}/></div><div><Badge cat={a.cat}/><h3 style={{fontFamily:hf,fontSize:"14.5px",fontWeight:700,lineHeight:1.38,color:"#111",marginBottom:"4px"}}>{a.title}</h3><div style={{fontFamily:uf,fontSize:"11px",color:"#bbb"}}>{a.date}</div></div></div>)}</div>
+      </div>
+    </section>
+
+    {lat.length > 0 && <section style={{maxWidth:MW,margin:"0 auto",padding:"28px 20px",borderBottom:"1px solid #EBEBEB"}}>
+      <SH title={t.lat}/><Rule/>
+      <div className="j4col" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"22px"}}>{lat.map(a=><ACard key={a.id} a={a} hf={hf} bf={bf} uf={uf} open={open} t={t}/>)}</div>
+    </section>}
+
+    <section style={{maxWidth:MW,margin:"0 auto",padding:"28px 20px",borderBottom:"1px solid #EBEBEB"}}>
+      <div className="j2col" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"44px"}}>
+        <div><SH title={t.tr}/><Rule/>{remaining.slice(0,5).map((a,i)=><div key={a.id} className="jcard" onClick={()=>open(a)} style={{display:"flex",gap:"13px",alignItems:"flex-start",marginBottom:"15px",paddingBottom:"15px",borderBottom:i<4?"1px solid #F2F2F2":"none"}}><div style={{fontFamily:uf,fontSize:"34px",fontWeight:900,color:"#E6E6E6",lineHeight:1,minWidth:"30px",textAlign:"center"}}>{i+1}</div><div><Badge cat={a.cat}/><h4 style={{fontFamily:hf,fontSize:"15px",fontWeight:700,lineHeight:1.4,color:"#111",marginBottom:"4px"}}>{a.title}</h4><span style={{fontFamily:uf,fontSize:"11px",color:R,fontWeight:700}}>↑ {a.views || '2K'} {t.vws}</span></div></div>)}
+          <div style={{marginTop:"10px",display:"flex",flexWrap:"wrap",gap:"7px"}}>{t.tags.map((tag,i)=><span key={i} className="jtag">{tag}</span>)}</div>
+        </div>
+        <div><SH title={t.pk}/><Rule/>{picks.length > 0 ? picks.map(a=><div key={a.id} className="jcard" onClick={()=>open(a)} style={{display:"flex",gap:"12px",marginBottom:"16px",paddingBottom:"16px",borderBottom:"1px solid #F2F2F2"}}><div className="jzoom" style={{width:"108px",height:"76px",flexShrink:0,borderRadius:"3px",background:"#eee"}}><img src={a.img} alt={a.title} style={{borderRadius:"3px"}}/></div><div><Badge cat={a.cat}/><h4 style={{fontFamily:hf,fontSize:"14px",fontWeight:700,lineHeight:1.4,color:"#111",marginBottom:"4px"}}>{a.title}</h4><div style={{fontFamily:uf,fontSize:"11px",color:"#bbb"}}>{a.author} · {a.date}</div></div></div>) : <div style={{color:"#888", fontSize:"14px", fontFamily:bf}}>No editor picks yet. Check back soon!</div>}</div>
+      </div>
+    </section>
+
+    <section style={{background:"#F8F8F8",padding:"36px 0",borderBottom:"1px solid #EBEBEB"}}>
+      <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
+        <div className="j2col" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"44px"}}>
+          <div><SH title={t.op}/><Rule/>{remaining.filter(a=>a.cat==="Opinion"||a.cat==="विचार").slice(0,3).map(a=><div key={a.id} className="jop" onClick={()=>open(a)}><div style={{display:"flex",gap:"12px"}}><div style={{width:"44px",height:"44px",background:"#6b3a9a",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><User size={18} color="rgba(255,255,255,.8)"/></div><div><div style={{fontFamily:uf,fontWeight:700,fontSize:"13px",color:"#333",marginBottom:"2px"}}>{a.author}</div><h4 style={{fontFamily:hf,fontSize:"16px",fontWeight:700,lineHeight:1.4,color:"#111",marginBottom:"6px"}}>{a.title}</h4><p style={{fontFamily:bf,color:"#1A1A1A",fontSize:"14px",lineHeight:1.6}}>{(a.summary||"").slice(0,115)}…</p></div></div></div>)}</div>
+          
+          <div style={{background:"#fff",padding:"24px",borderRadius:"8px",border:"1px solid #EBEBEB", height:"fit-content"}}>
+             <div style={{fontFamily:uf,fontWeight:800,fontSize:"16px",color:N,marginBottom:"12px",textTransform:"uppercase"}}>Newsletter</div>
+             <p style={{color:"#555",fontSize:"14px",lineHeight:1.6,marginBottom:"20px", fontFamily:bf}}>{t.nls}</p>
+             {subbed?<div style={{color:"#1a7a4a",fontFamily:uf,fontSize:"15px",fontWeight:700,padding:"14px",background:"rgba(26,122,74,.1)",borderRadius:"4px"}}>✓ {lang==="hi"?"सफलतापूर्वक सब्सक्राइब!":"Successfully subscribed!"}</div>
+             :<div><input className="ainp" placeholder={t.emph} value={email} onChange={e=>setEmail(e.target.value)} style={{marginBottom:"10px"}}/><button className="jbtn" onClick={()=>email.includes("@")&&setSub(true)} style={{width:"100%"}}>{t.subt}</button></div>}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>;
+}
+
+function ArticlePage({a,t,goHome,hf,bf,uf,related,open,lang}){
+  return <div><div className="jprog"/>
+    <div style={{maxWidth:MW,margin:"0 auto",padding:"28px 20px"}}>
+      <div style={{fontFamily:uf,fontSize:"12.5px",color:"#999",marginBottom:"22px",display:"flex",gap:"7px",alignItems:"center"}}><span onClick={goHome} style={{color:R,cursor:"pointer",fontWeight:700}}>{lang==="hi"?"होम":"Home"}</span><ChevronRight size={12} color="#ccc"/><span>{a.cat}</span></div>
+      <div className="jh2col" style={{display:"grid",gridTemplateColumns:"2fr 1fr",gap:"40px"}}>
+        <article>
+          <span className="jbadge" style={{background:cc(a.cat)}}>{a.cat}</span>
+          <h1 style={{fontFamily:hf,fontSize:"32px",fontWeight:900,lineHeight:1.3,color:"#000",margin:"10px 0 14px"}}>{a.title}</h1>
+          <div style={{fontFamily:hf,fontStyle:"italic",fontSize:"19px",color:"#333",lineHeight:1.6,marginBottom:"18px",borderLeft:"3px solid "+R,paddingLeft:"14px"}}>{a.summary}</div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"12px 0",borderTop:"1px solid #E8E8E8",borderBottom:"1px solid #E8E8E8",marginBottom:"22px"}}>
+            <div style={{display:"flex",alignItems:"center",gap:"10px"}}><div style={{width:"38px",height:"38px",background:N,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center"}}><User size={16} color="#fff"/></div><div><div style={{fontFamily:uf,fontWeight:700,fontSize:"14px",color:"#111"}}>{a.author}</div><div style={{fontFamily:uf,fontSize:"12px",color:"#888"}}>{a.date} · {a.rt} {t.mr}</div></div></div>
+          </div>
+          <div style={{marginBottom:"22px",borderRadius:"5px",overflow:"hidden"}}><img src={a.img} alt={a.title} style={{width:"100%",height:"auto",maxHeight:"450px",objectFit:"cover",borderRadius:"5px"}}/></div>
+          <div style={{fontFamily:lang==="hi"?"'Noto Serif Devanagari',serif":"'Source Sans 3',sans-serif",fontSize:"17px",lineHeight:1.9,color:"#1A1A1A"}}>{(a.body||a.summary||"").split("\n\n").map((p,i)=><p key={i} style={{marginBottom:"22px"}}>{p}</p>)}</div>
+        </article>
+        <aside><SH title={t.lat}/><Rule/>{related.length > 0 ? related.map(r=><ACard key={r.id} a={r} hf={hf} bf={bf} uf={uf} open={open} size="h" t={t}/>) : <div style={{color:"#888", fontSize:"14px", fontFamily:bf}}>No other articles found.</div>}</aside>
+      </div>
+    </div>
+  </div>;
+}
+
+function Footer({t,uf,goHome}){
+  const cols=[{h:"News",links:["National","Politics","Technology","Agriculture"]},{h:"More",links:["Sports","Health","Education","Entertainment"]}];
+  return <footer style={{background:DN,paddingTop:"44px"}}>
+    <div style={{maxWidth:MW,margin:"0 auto",padding:PA}}>
+      <div className="j4col" style={{display:"grid",gridTemplateColumns:"2fr 1fr 1fr 2fr",gap:"28px",marginBottom:"36px"}}>
+        <div><div style={{display:"flex",alignItems:"center",gap:"11px",marginBottom:"14px"}}><div style={{width:"40px",height:"40px",background:R,borderRadius:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:uf,fontWeight:900,fontSize:"22px"}}>J</span></div><div><div style={{fontFamily:uf,fontWeight:900,fontSize:"19px",color:"#fff"}}>{t.n1} <span style={{color:R}}>{t.n2}</span></div><div style={{fontFamily:uf,fontSize:"8.5px",letterSpacing:"2px",color:"#555",textTransform:"uppercase"}}>Truth · Facts · People's Voice</div></div></div><p style={{fontSize:"13px",lineHeight:1.7,color:"#99A",marginBottom:"14px"}}>Independent digital journalism for India.</p><div style={{fontFamily:uf,fontSize:"12px",color:"#889",display:"flex",alignItems:"center",gap:"6px",marginBottom:"14px"}}><Mail size={12}/> sudhakarjhanews@gmail.com</div><div style={{display:"flex",gap:"12px"}}>{[Facebook,Twitter,Instagram,Youtube].map((Icon,i)=><a key={i} href="#" style={{width:"30px",height:"30px",background:"rgba(255,255,255,.07)",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",color:"#889",textDecoration:"none"}}><Icon size={13}/></a>)}</div></div>
+        {cols.map(col=><div key={col.h}><div style={{fontFamily:uf,fontWeight:700,fontSize:"13px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"13px",paddingBottom:"7px",borderBottom:"2px solid "+R}}>{col.h}</div>{col.links.map((l,i)=><span key={i} className="jflink" onClick={goHome}>{l}</span>)}</div>)}
+        <div>
+          <div style={{fontFamily:uf,fontWeight:700,fontSize:"13px",color:"#fff",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"13px",paddingBottom:"7px",borderBottom:"2px solid "+R}}>Privacy Policy & Disclaimer</div>
+          <p style={{fontSize:"13px",lineHeight:1.6,color:"#889"}}>All views and opinions expressed in the articles are solely those of the respective authors and do not necessarily reflect the official policy or position of Janardan News. Viewer discretion is advised. Information is provided for educational and informational purposes only.</p>
+        </div>
+      </div>
+      <div style={{borderTop:"1px solid rgba(255,255,255,.07)",padding:"18px 0",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:"10px",alignItems:"center"}}>
+        <span style={{fontFamily:uf,fontSize:"13px",color:"#667"}}>© 2026 Janardan News. All Rights Reserved. | Founder: Sudhakar Jha</span>
+      </div>
+    </div>
+  </footer>;
+}
+
+function JanardanNews(){
+  const [lang,setLang]=useState("en");
+  const [page,setPage]=useState("home");
+  const [menuOpen,setMenuOpen]=useState(false);
+  const [sel,setSel]=useState(null);
+  const [email,setEmail]=useState("");
+  const [subbed,setSubbed]=useState(false);
+  const [istTime, setIstTime] = useState("");
+  
+  // Database State
+  const [dbArts, setDbArts] = useState({en: [], hi: []});
+  const [loading, setLoading] = useState(true);
+
+  // Fetch from our new GitHub JSON database
+  useEffect(() => {
+    fetch('/data/articles.json')
+      .then(res => {
+        if(!res.ok) throw new Error("Database not found yet");
+        return res.json();
+      })
+      .then(data => {
+        if(data && data.items) {
+          const en = data.items.filter(i => i.lang === 'en').map((a, idx) => ({...a, id: 'e'+idx}));
+          const hi = data.items.filter(i => i.lang === 'hi').map((a, idx) => ({...a, id: 'h'+idx}));
+          setDbArts({en, hi});
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log("Welcome! Your database is initializing.");
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(()=>{
+    const d = new Intl.DateTimeFormat('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' }).format(new Date());
+    setIstTime(d + " (IST)");
+  },[]);
+
+  const t=T[lang],isHi=lang==="hi";
+  const hf=isHi?"'Noto Serif Devanagari',Georgia,serif":"'Playfair Display',Georgia,serif";
+  const bf=isHi?"'Noto Sans Devanagari',sans-serif":"'Source Sans 3',sans-serif";
+  const uf="'Rajdhani','Trebuchet MS',sans-serif";
+  
+  const currentArts = dbArts[lang];
+
+  const open=a=>{setSel(a);setPage("article");setMenuOpen(false);window.scrollTo(0,0);};
+  const goHome=()=>{setPage("home");setSel(null);};
+
+  if(loading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontFamily:uf,fontSize:"18px",color:N}}>Connecting to Janardan Database…</div>;
+
+  return <div style={{fontFamily:bf,background:"#FCFCFC",color:"#000",minHeight:"100vh"}}>
+    {menuOpen&&<div className="jmenu"><div style={{background:DN,padding:"16px 22px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"2px solid "+R}}><span style={{fontFamily:uf,fontWeight:900,fontSize:"19px",color:"#fff"}}>{t.n1} <span style={{color:R}}>{t.n2}</span></span><button onClick={()=>setMenuOpen(false)} style={{background:"none",border:"none",cursor:"pointer"}}><X size={24} color="#fff"/></button></div>{t.nav.map((item,i)=><span key={i} className="jmi" onClick={()=>{setMenuOpen(false);goHome();}}>{item}</span>)}<a href="/admin/" className="jmi" style={{color:R}}>⚙ Admin Login</a></div>}
+    
+    <div style={{background:N,color:"rgba(255,255,255,.8)",padding:"6px 0",fontSize:"13px"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"12px"}}><span className="jtm" style={{fontFamily:uf}}>{istTime}</span><div style={{display:"flex",gap:"16px"}}>{[Facebook,Twitter,Instagram,Youtube].map((Icon,i)=><a key={i} href="#" style={{opacity:.8, color:"#fff", textDecoration:"none"}}><Icon size={14}/></a>)}</div></div></div>
+    
+    <header style={{background:"#fff",padding:"16px 0",boxShadow:"0 1px 8px rgba(0,0,0,.04)"}}><div style={{maxWidth:MW,margin:"0 auto",padding:PA,display:"flex",justifyContent:"space-between",alignItems:"center",gap:"14px"}}><div onClick={goHome} style={{cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:"14px"}}><div style={{width:"52px",height:"52px",background:R,borderRadius:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{color:"#fff",fontFamily:uf,fontWeight:900,fontSize:"28px",lineHeight:1}}>J</span></div><div><div style={{fontFamily:uf,fontWeight:900,fontSize:"26px",letterSpacing:"1.5px",color:N}}>{t.n1} <span style={{color:R}}>{t.n2}</span></div><div style={{fontFamily:uf,fontSize:"10px",letterSpacing:"2.5px",color:"#999",textTransform:"uppercase",marginTop:"2px"}}>{t.tag}</div></div></div><div style={{display:"flex",alignItems:"center",gap:"12px"}}><div className="jtmx" style={{position:"relative"}}><input className="jsrch" placeholder={t.src}/><Search size={14} style={{position:"absolute",left:"10px",top:"50%",transform:"translateY(-50%)",color:"#bbb",pointerEvents:"none"}}/></div><button onClick={()=>setLang(lang==="en"?"hi":"en")} style={{background:N,color:"#fff",border:"none",padding:"10px 16px",fontFamily:uf,fontWeight:700,fontSize:"14px",borderRadius:"3px",cursor:"pointer",display:"flex",alignItems:"center",gap:"6px",flexShrink:0}}><Globe size={14}/>{t.lng}</button><button onClick={()=>setMenuOpen(true)} style={{background:"none",border:"none",cursor:"pointer",padding:"4px"}}><Menu size={26} color={N}/></button></div></div></header>
+    
+    <div style={{background:R,overflow:"hidden",height:"38px",display:"flex",alignItems:"center",borderBottom:"2px solid #990000"}}><div style={{background:"#990000",padding:"0 18px",height:"100%",display:"flex",alignItems:"center",flexShrink:0}}><span style={{color:"#fff",fontFamily:uf,fontWeight:900,fontSize:"12.5px",letterSpacing:"1.5px",whiteSpace:"nowrap"}}>🔴 {t.brk}</span></div><div style={{flex:1,overflow:"hidden"}}><span className="jticker">{t.tick}</span></div></div>
+    
+    <nav style={{background:N,borderBottom:"3px solid "+R,overflowX:"auto",position:"sticky",top:0,zIndex:100,scrollbarWidth:"none"}}><div style={{maxWidth:MW,margin:"0 auto",padding:"0 20px",display:"flex", justifyContent:"space-between"}}><div style={{display:"flex"}}>{t.nav.map((item,i)=><span key={i} className={`jnl${i===0&&page==="home"?" active":""}`} onClick={goHome}>{item}</span>)}</div><a href="/admin/" className="jnl" style={{color:"#FF9999"}}>⚙ ADMIN</a></div></nav>
+    
+    <main>
+      {page==="home"&&<HomePage t={t} arts={currentArts} hf={hf} bf={bf} uf={uf} open={open} email={email} setEmail={setEmail} subbed={subbed} setSub={setSubbed} lang={lang}/>}
+      {page==="article"&&sel&&<ArticlePage a={sel} t={t} goHome={goHome} hf={hf} bf={bf} uf={uf} related={currentArts.filter(x=>x.id!==sel.id).slice(0,4)} open={open} lang={lang}/>}
+    </main>
+    <Footer t={t} uf={uf} goHome={goHome}/>
+  </div>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<JanardanNews/>);
+</script>
+</body>
+</html>
