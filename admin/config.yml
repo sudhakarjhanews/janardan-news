@@ -7,9 +7,9 @@ public_folder: "/images"
 
 collections:
   - name: "news"
-    label: "News Database"
+    label: "समाचार (News Articles)"
     files:
-      - label: "Manage Articles"
+      - label: "लेख प्रबंधित करें (Manage Articles)"
         name: "articles"
         file: "data/articles.json"
         fields:
@@ -17,14 +17,40 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - {label: "Language", name: "lang", widget: "select", options: ["en", "hi"]}
-              - {label: "Category", name: "cat", widget: "select", options: ["National", "Politics", "Technology", "Agriculture", "Health", "Education", "Sports", "Opinion", "Entertainment", "राष्ट्रीय", "तकनीक", "कृषि", "राजनीति", "खेल", "स्वास्थ्य", "शिक्षा", "विचार", "मनोरंजन"]}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Summary", name: "summary", widget: "text"}
-              - {label: "Body", name: "body", widget: "markdown", required: false}
-              - {label: "Author", name: "author", widget: "string", default: "Reporter"}
-              - {label: "Date", name: "date", widget: "string"}
-              - {label: "Image", name: "img", widget: "image", required: false}
-              - {label: "Read Time (minutes)", name: "rt", widget: "number", default: 5}
-              - {label: "Hero Feature", name: "feat", widget: "boolean", default: false, required: false}
-              - {label: "Editor's Pick", name: "pick", widget: "boolean", default: false, required: false}
+              - {label: "श्रेणी (Category)", name: "cat", widget: "select", options: ["झारखंड", "राष्ट्रीय", "राजनीति", "तकनीक", "कृषि", "स्वास्थ्य", "शिक्षा", "खेल", "विचार", "मनोरंजन"]}
+              - {label: "शीर्षक (Title)", name: "title", widget: "string"}
+              - {label: "सारांश (Summary)", name: "summary", widget: "text"}
+              - {label: "पूरी खबर (Body)", name: "body", widget: "markdown", required: false}
+              - {label: "लेखक (Author)", name: "author", widget: "string", default: "संवाददाता"}
+              - {label: "तारीख (Date)", name: "date", widget: "string"}
+              - {label: "चित्र (Image URL)", name: "img", widget: "image", required: false}
+              - {label: "पढ़ने का समय (Read Time in Min)", name: "rt", widget: "number", default: 5}
+              - {label: "ब्रेकिंग न्यूज़ में दिखाएं? (Show in Breaking Ticker)", name: "breaking", widget: "boolean", default: false, required: false}
+              - {label: "मुख्य खबर (Main Hero Feature)", name: "feat", widget: "boolean", default: false, required: false}
+              - {label: "संपादक की पसंद (Editor's Pick)", name: "pick", widget: "boolean", default: false, required: false}
+  
+  - name: "videos"
+    label: "वीडियो (YouTube Links)"
+    files:
+      - label: "वीडियो प्रबंधित करें (Manage Videos)"
+        name: "videos"
+        file: "data/videos.json"
+        fields:
+          - label: "Videos"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "शीर्षक (Video Title)", name: "title", widget: "string"}
+              - {label: "YouTube Video ID (Example: for youtube.com/watch?v=dQw4w9WgXcQ, enter dQw4w9WgXcQ)", name: "vid", widget: "string"}
+
+  - name: "settings"
+    label: "साइट सेटिंग्स (Settings)"
+    files:
+      - label: "सोशल लिंक्स (Social Links)"
+        name: "global"
+        file: "data/settings.json"
+        fields:
+          - {label: "Facebook Link", name: "facebook", widget: "string", default: "#", required: false}
+          - {label: "Twitter Link", name: "twitter", widget: "string", default: "#", required: false}
+          - {label: "Instagram Link", name: "instagram", widget: "string", default: "#", required: false}
+          - {label: "YouTube Channel Link", name: "youtube", widget: "string", default: "#", required: false}
