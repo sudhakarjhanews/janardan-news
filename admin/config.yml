@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "news"
+    label: "News Database"
+    files:
+      - label: "Manage Articles"
+        name: "articles"
+        file: "data/articles.json"
+        fields:
+          - label: "Articles"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Language", name: "lang", widget: "select", options: ["en", "hi"]}
+              - {label: "Category", name: "cat", widget: "select", options: ["National", "Politics", "Technology", "Agriculture", "Health", "Education", "Sports", "Opinion", "Entertainment", "राष्ट्रीय", "तकनीक", "कृषि", "राजनीति", "खेल", "स्वास्थ्य", "शिक्षा", "विचार", "मनोरंजन"]}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Summary", name: "summary", widget: "text"}
+              - {label: "Body", name: "body", widget: "markdown", required: false}
+              - {label: "Author", name: "author", widget: "string", default: "Reporter"}
+              - {label: "Date", name: "date", widget: "string"}
+              - {label: "Image", name: "img", widget: "image", required: false}
+              - {label: "Read Time (minutes)", name: "rt", widget: "number", default: 5}
+              - {label: "Hero Feature", name: "feat", widget: "boolean", default: false, required: false}
+              - {label: "Editor's Pick", name: "pick", widget: "boolean", default: false, required: false}
