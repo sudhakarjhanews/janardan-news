@@ -41,7 +41,7 @@ collections:
             widget: "list"
             fields:
               - {label: "शीर्षक (Video Title)", name: "title", widget: "string"}
-              - {label: "YouTube Video ID (Example: for youtube.com/watch?v=dQw4w9WgXcQ, enter dQw4w9WgXcQ)", name: "vid", widget: "string"}
+              - {label: "YouTube Video ID (उदाहरण: youtube.com/watch?v=123ABCxyz के लिए केवल 123ABCxyz डालें)", name: "vid", widget: "string"}
 
   - name: "settings"
     label: "साइट सेटिंग्स (Settings)"
